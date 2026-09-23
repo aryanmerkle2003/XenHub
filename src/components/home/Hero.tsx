@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import heroImg from '../../assets/images/hero.jpg'
 import logoMark from '../../assets/images/logo-mark.svg'
 import logoWordmark from '../../assets/images/logo-wordmark.svg'
@@ -41,15 +42,15 @@ export default function Hero() {
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
-          <motion.a
-            href="#workshops"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="flex h-[41px] items-center justify-center gap-2 rounded-lg bg-brand px-6 text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
-          >
-            Explore XEN
-            <span aria-hidden>→</span>
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              to="/explore-xen"
+              className="flex h-[41px] items-center justify-center gap-2 rounded-lg bg-brand px-6 text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
+            >
+              Explore XEN
+              <span aria-hidden>→</span>
+            </Link>
+          </motion.div>
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.03 }}

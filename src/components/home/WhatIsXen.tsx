@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import xenConcept from '../../assets/images/xen-concept.png'
 import Reveal from '../Reveal'
 
@@ -22,15 +23,15 @@ export default function WhatIsXen() {
               co-create innovative solutions grounded in feasibility.
             </p>
           </div>
-          <motion.a
-            href="#workshops"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="flex h-[41px] items-center justify-center gap-2 rounded-lg border border-brand-dark px-5 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-dark hover:text-white"
-          >
-            Explore XEN
-            <span aria-hidden>→</span>
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              to="/explore-xen"
+              className="flex h-[41px] items-center justify-center gap-2 rounded-lg border border-brand-dark px-5 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-dark hover:text-white"
+            >
+              Explore XEN
+              <span aria-hidden>→</span>
+            </Link>
+          </motion.div>
         </Reveal>
 
         <Reveal delay={0.15} className="shrink-0">

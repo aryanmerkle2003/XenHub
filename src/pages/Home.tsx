@@ -1,5 +1,5 @@
+import ConnectBanner from '../components/ConnectBanner'
 import Footer from '../components/Footer'
-import ConnectBanner from '../components/home/ConnectBanner'
 import Hero from '../components/home/Hero'
 import RecentProject from '../components/home/RecentProject'
 import UsageSection from '../components/home/UsageSection'

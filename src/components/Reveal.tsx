@@ -10,13 +10,16 @@ export default function Reveal({
   children,
   delay = 0,
   className,
+  id,
 }: {
   children?: ReactNode
   delay?: number
   className?: string
+  id?: string
 }) {
   return (
     <motion.div
+      id={id}
       className={className}
       initial="hidden"
       whileInView="visible"
