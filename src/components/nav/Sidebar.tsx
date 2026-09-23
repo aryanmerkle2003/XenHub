@@ -12,9 +12,9 @@ export default function Sidebar() {
   const [isLight, setIsLight] = useState(true)
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-20 flex w-[260px] flex-col justify-between overflow-y-auto border-r border-[#edeff2] bg-white px-4 pb-4 pt-6">
-      <div className="flex flex-col gap-4">
-        <Link to="/" className="flex items-center px-4 pb-6 pt-5">
+    <aside className="fixed inset-y-0 left-0 z-20 flex w-[260px] flex-col overflow-y-auto border-r border-[#edeff2] bg-white p-4">
+      <div className="flex flex-col gap-2">
+        <Link to="/" className="flex items-center justify-center px-4 py-2.5">
           <img src={xenHubLogo} alt="XEN HUB" className="h-[34px] w-auto" />
         </Link>
 
@@ -66,6 +66,8 @@ export default function Sidebar() {
           ))}
         </nav>
       </div>
+
+      <div className="min-h-9 flex-1" />
 
       <div className="flex flex-col gap-3">
         <div className="flex h-[41px] w-[77px] items-center gap-[1.5px] rounded-full bg-[#e6e6e6] p-[3px]">
