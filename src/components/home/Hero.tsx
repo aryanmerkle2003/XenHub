@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import heroImg from '../../assets/images/hero.jpg'
-import logoMark from '../../assets/images/logo-mark.svg'
-import logoWordmark from '../../assets/images/logo-wordmark.svg'
+import xenHubLogoWhite from '../../assets/images/xen-hub-logo-white.png'
 
 export default function Hero() {
   return (
@@ -22,10 +21,7 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
       >
-        <div className="flex items-center gap-2">
-          <img src={logoWordmark} alt="" className="h-8 w-auto md:h-[33px]" />
-          <img src={logoMark} alt="XEN HUB" className="h-6 w-auto md:h-[23px]" />
-        </div>
+        <img src={xenHubLogoWhite} alt="XEN HUB" className="h-8 w-auto md:h-[34px]" />
 
         <div className="flex flex-col gap-5 text-white">
           <h1 className="text-3xl font-bold leading-tight md:text-[44px] md:leading-[52px]">

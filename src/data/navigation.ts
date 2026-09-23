@@ -14,7 +14,7 @@ export const navSections: NavSection[] = [
     title: 'Learn',
     items: [
       { label: 'Explore XEN', to: '/explore-xen' },
-      { label: 'Workshop Overview' },
+      { label: 'Workshop Overview', to: '/workshop-overview' },
     ],
   },
   {
