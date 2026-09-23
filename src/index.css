@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  --color-brand: #0326d1;
+  --color-brand-dark: #1e1eb5;
+  --color-ink: #121212;
+  --color-body: #59616b;
+  --color-muted: #6b7280;
+  --color-hairline: #ededed;
+  --color-surface: #fafafc;
+  --color-icon-bg: #edf0f7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
