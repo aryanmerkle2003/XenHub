@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import logoMark from '../../assets/images/logo-mark-dark.svg'
-import logoWordmark from '../../assets/images/logo-wordmark-dark.svg'
+import xenHubLogo from '../../assets/images/xen-hub-logo.png'
 import iconSearch from '../../assets/images/icon-search.svg'
 import iconChevronDown from '../../assets/images/icon-chevron-down.svg'
 import iconSun from '../../assets/images/icon-sun.svg'
@@ -15,9 +14,8 @@ export default function Sidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 z-20 flex w-[260px] flex-col justify-between overflow-y-auto border-r border-[#edeff2] bg-white px-4 pb-4 pt-6">
       <div className="flex flex-col gap-4">
-        <Link to="/" className="flex items-center gap-2 px-4 pb-6 pt-5">
-          <img src={logoWordmark} alt="" className="h-[26px] w-auto" />
-          <img src={logoMark} alt="XEN HUB" className="h-[18px] w-auto" />
+        <Link to="/" className="flex items-center px-4 pb-6 pt-5">
+          <img src={xenHubLogo} alt="XEN HUB" className="h-[34px] w-auto" />
         </Link>
 
         <div className="flex h-10 w-full items-center gap-[9px] rounded-[10px] border border-[#e5e7eb] px-3">
