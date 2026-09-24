@@ -21,16 +21,16 @@ export default function WorkshopJourney({ phases }: { phases: WorkshopPhase[] })
         </span>
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-1 px-0.5 py-2">
         {phases.map((phase, i) => (
-          <div key={phase.title} className={`flex items-start gap-3.5 ${i > 0 ? '-mt-1.5' : ''}`}>
+          <div key={phase.title} className="flex items-center gap-3">
             <span
               className="flex size-[58px] shrink-0 items-center justify-center rounded-full text-[17px] font-bold text-white"
-              style={{ backgroundColor: circleColors[i % circleColors.length], opacity: 0.9 }}
+              style={{ backgroundColor: circleColors[i % circleColors.length], opacity: 0.8 }}
             >
               {i + 1}
             </span>
-            <div className="flex flex-col gap-0.5 pt-[19px] pb-4">
+            <div className="flex min-w-0 flex-1 flex-col gap-px">
               <p className="text-sm font-semibold text-[#111827]">{phase.title}</p>
               <p className="text-[11px] leading-[1.4] text-[#4b5563]">{phase.description}</p>
             </div>
