@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 import decorCell1 from '../../assets/images/decor-cell-1.svg'
 import decorCell2 from '../../assets/images/decor-cell-2.svg'
 import decorCell3 from '../../assets/images/decor-cell-3.svg'
@@ -15,56 +16,120 @@ import Reveal from '../Reveal'
 
 type Workshop = {
   title: string
+  backTitle?: string
+  description: string
   gradient: string
 }
 
 const workshops: Workshop[] = [
   {
     title: 'Vision Alignment & Roadmapping',
+    description:
+      'Align leaders on the future direction and build a feasible 3–5 year roadmap, bringing together C-suite, executives, product owners, and key stakeholders.',
     gradient: 'linear-gradient(153deg, #141473 0%, #401fa6 71%)',
   },
   {
     title: 'Discovery & Definition',
+    description:
+      'Solve specific business challenges through cross-functional collaboration, grounded in extensive research, industry benchmarking, and competitor analysis.',
     gradient: 'linear-gradient(90deg, #2e26c7 0%, #5938d9 100%)',
   },
   {
     title: 'Business AI',
+    backTitle: 'Business AI Workshop',
+    description:
+      "Help organizations move forward on their AI journey — from identifying what's possible to defining relevant use cases and building an AI roadmap.",
     gradient: 'linear-gradient(21deg, #5926bf 14%, #8c40d9 86%)',
   },
   {
     title: 'Process Design',
+    description:
+      'Identify gaps and opportunities across teams and processes, with a focus on improving efficiency and exploring opportunities for automation.',
     gradient: 'linear-gradient(90deg, #732eb8 0%, #9e4794 100%)',
   },
   {
     title: 'Experience Design Trends Alignment',
+    description:
+      "Explore emerging experience trends and identify those most relevant to the organization, helping teams align their experience strategy with what's next.",
     gradient: 'linear-gradient(159deg, #1e1eb5 20%, #2640e5 80%)',
   },
   {
     title: 'Product Adoption & Retention',
+    description:
+      'Plan for adoption from the start, helping teams prepare for rollout and maximize how effectively customers or employees use the solution.',
     gradient: 'linear-gradient(90deg, #0d0f59 0%, #1f1a8c 100%)',
   },
   {
     title: 'Service Design',
+    description:
+      'Design better customer journeys by bringing together technology, operations, marketing, and other functions that collectively shape the service experience.',
     gradient: 'linear-gradient(124deg, #8c2680 0%, #b84073 100%)',
   },
   {
     title: 'Solution Rollout Strategy',
+    description:
+      'Plan how a solution moves into the organization — from rollout phases and communication to the teams needed to drive effective adoption.',
     gradient: 'linear-gradient(90deg, #0f3380 0%, #1a4db2 100%)',
   },
 ]
 
-function WorkshopCard({ title, gradient }: Workshop) {
+const FLIP_BACK_DELAY_MS = 15000
+
+function WorkshopCard({ title, backTitle, description, gradient }: Workshop) {
+  const [flipped, setFlipped] = useState(false)
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
+  }, [])
+
+  const toggleFlip = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    setFlipped((prev) => {
+      const next = !prev
+      if (next) {
+        timeoutRef.current = setTimeout(() => setFlipped(false), FLIP_BACK_DELAY_MS)
+      }
+      return next
+    })
+  }
+
   return (
-    <motion.div
-      whileHover={{ scale: 1.02 }}
+    <motion.button
+      type="button"
+      onClick={toggleFlip}
+      aria-pressed={flipped}
+      aria-label={`${title} — click to ${flipped ? 'hide' : 'show'} description`}
+      whileHover={{ scale: 1.03 }}
       transition={{ duration: 0.2 }}
-      className="flex h-[130px] w-full items-end overflow-clip rounded-lg p-4 shrink-0 md:w-[346px]"
-      style={{ backgroundImage: gradient }}
+      className="relative h-[130px] w-full shrink-0 rounded-lg text-left md:w-[346px]"
+      style={{ perspective: '1000px' }}
     >
-      <p className="text-base font-semibold leading-[1.25] text-white">
-        {title}
-      </p>
-    </motion.div>
+      <motion.div
+        className="relative size-full rounded-lg"
+        style={{ transformStyle: 'preserve-3d' }}
+        animate={{ rotateX: flipped ? 180 : 0 }}
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
+      >
+        <div
+          className="absolute inset-0 flex items-end overflow-clip rounded-lg p-4 [backface-visibility:hidden]"
+          style={{ backgroundImage: gradient }}
+        >
+          <p className="text-base font-semibold leading-[1.25] text-white">
+            {title}
+          </p>
+        </div>
+        <div
+          className="absolute inset-0 flex flex-col gap-2 overflow-clip rounded-lg px-4 pb-[11px] pt-4 [backface-visibility:hidden]"
+          style={{ backgroundImage: gradient, transform: 'rotateX(180deg)' }}
+        >
+          <p className="text-[10px] font-bold text-white">{backTitle ?? title}</p>
+          <p className="text-[13px] leading-[1.5] text-[#e5e5ed]">{description}</p>
+        </div>
+      </motion.div>
+    </motion.button>
   )
 }
 
