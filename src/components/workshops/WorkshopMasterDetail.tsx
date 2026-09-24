@@ -49,7 +49,7 @@ export default function WorkshopMasterDetail() {
           className="flex flex-1 flex-col gap-6 rounded-2xl bg-[#f6f7f9] px-8 py-8"
         >
           <h3 className="text-xl font-bold leading-[1.3] text-[#111827]">
-            {activeWorkshop.title} Workshop
+            {activeWorkshop.heading}
           </h3>
 
           <div className="flex flex-col gap-2">
