@@ -7,7 +7,7 @@ import slide3 from '../../assets/images/slide-3.jpg'
 import { workshops } from '../../data/workshops'
 import WorkshopJourney from './WorkshopJourney'
 
-const placeholderSlides = [slide1, slide3, slide2]
+const placeholderSlides = [slide1, slide2, slide3]
 
 export default function WorkshopMasterDetail() {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -46,7 +46,7 @@ export default function WorkshopMasterDetail() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="flex flex-1 flex-col gap-6 rounded-2xl bg-[#f6f7f9] px-8 py-8"
+          className="flex min-w-0 flex-1 flex-col gap-6 rounded-2xl bg-[#f6f7f9] px-8 py-8"
         >
           <h3 className="text-xl font-bold leading-[1.3] text-[#111827]">
             {activeWorkshop.heading}
@@ -57,15 +57,13 @@ export default function WorkshopMasterDetail() {
             <p className="text-sm leading-[1.65] text-[#4b5563]">{activeWorkshop.overview}</p>
           </div>
 
-          <div className="flex w-full gap-4">
+          <div className="flex w-full gap-4 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {placeholderSlides.map((src, i) => (
               <img
                 key={i}
                 src={src}
                 alt={`${activeWorkshop.id}-overview-slide-${i + 1}`}
-                className={`h-[160px] rounded-[10px] object-cover ${
-                  i === 1 ? 'flex-1' : 'w-[252px] shrink-0'
-                }`}
+                className="h-[160px] w-[252px] shrink-0 rounded-[10px] object-cover"
               />
             ))}
           </div>
