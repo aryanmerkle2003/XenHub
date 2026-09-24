@@ -1,21 +1,22 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
-import decorCell1 from '../../assets/images/decor-cell-1.svg'
-import decorCell2 from '../../assets/images/decor-cell-2.svg'
-import decorCell3 from '../../assets/images/decor-cell-3.svg'
-import decorCell4 from '../../assets/images/decor-cell-4.svg'
-import decorCell5 from '../../assets/images/decor-cell-5.svg'
-import decorCell6 from '../../assets/images/decor-cell-6.svg'
-import decorCell7 from '../../assets/images/decor-cell-7.svg'
-import decorCell8 from '../../assets/images/decor-cell-8.svg'
-import group128 from '../../assets/images/group128.svg'
-import group130 from '../../assets/images/group130.svg'
-import group133 from '../../assets/images/group133.svg'
-import group134 from '../../assets/images/group134.svg'
+import row1Decor from '../../assets/images/row1-decor.svg'
+import row2DecorAIcon from '../../assets/images/row2-decor-a-icon.svg'
+import row2DecorBIcon from '../../assets/images/row2-decor-b-icon.svg'
+import row3DecorA from '../../assets/images/row3-decor-a.svg'
+import row3DecorB from '../../assets/images/row3-decor-b.svg'
+import row4DecorA from '../../assets/images/row4-decor-a.svg'
+import row4DecorB from '../../assets/images/row4-decor-b.svg'
+import row4DecorC from '../../assets/images/row4-decor-c.svg'
+import row4DecorDIcon from '../../assets/images/row4-decor-d-icon.svg'
+import row5DecorA from '../../assets/images/row5-decor-a.svg'
+import row5DecorB from '../../assets/images/row5-decor-b.svg'
+import row5DecorCIcon from '../../assets/images/row5-decor-c-icon.svg'
 import Reveal from '../Reveal'
 
 type Workshop = {
   title: string
+  titleLines: string[]
   backTitle?: string
   description: string
   gradient: string
@@ -24,18 +25,21 @@ type Workshop = {
 const workshops: Workshop[] = [
   {
     title: 'Vision Alignment & Roadmapping',
+    titleLines: ['Vision Alignment', '& Roadmapping'],
     description:
       'Align leaders on the future direction and build a feasible 3–5 year roadmap, bringing together C-suite, executives, product owners, and key stakeholders.',
     gradient: 'linear-gradient(153deg, #141473 0%, #401fa6 71%)',
   },
   {
     title: 'Discovery & Definition',
+    titleLines: ['Discovery', '& Definition'],
     description:
       'Solve specific business challenges through cross-functional collaboration, grounded in extensive research, industry benchmarking, and competitor analysis.',
     gradient: 'linear-gradient(90deg, #2e26c7 0%, #5938d9 100%)',
   },
   {
     title: 'Business AI',
+    titleLines: ['Business AI'],
     backTitle: 'Business AI Workshop',
     description:
       "Help organizations move forward on their AI journey — from identifying what's possible to defining relevant use cases and building an AI roadmap.",
@@ -43,30 +47,35 @@ const workshops: Workshop[] = [
   },
   {
     title: 'Process Design',
+    titleLines: ['Process', 'Design'],
     description:
       'Identify gaps and opportunities across teams and processes, with a focus on improving efficiency and exploring opportunities for automation.',
     gradient: 'linear-gradient(90deg, #732eb8 0%, #9e4794 100%)',
   },
   {
     title: 'Experience Design Trends Alignment',
+    titleLines: ['Experience Design', 'Trends Alignment'],
     description:
       "Explore emerging experience trends and identify those most relevant to the organization, helping teams align their experience strategy with what's next.",
     gradient: 'linear-gradient(159deg, #1e1eb5 20%, #2640e5 80%)',
   },
   {
     title: 'Product Adoption & Retention',
+    titleLines: ['Product Adoption', '& Retention'],
     description:
       'Plan for adoption from the start, helping teams prepare for rollout and maximize how effectively customers or employees use the solution.',
     gradient: 'linear-gradient(90deg, #0d0f59 0%, #1f1a8c 100%)',
   },
   {
     title: 'Service Design',
+    titleLines: ['Service', 'Design'],
     description:
       'Design better customer journeys by bringing together technology, operations, marketing, and other functions that collectively shape the service experience.',
     gradient: 'linear-gradient(124deg, #8c2680 0%, #b84073 100%)',
   },
   {
     title: 'Solution Rollout Strategy',
+    titleLines: ['Solution Rollout', 'Strategy'],
     description:
       'Plan how a solution moves into the organization — from rollout phases and communication to the teams needed to drive effective adoption.',
     gradient: 'linear-gradient(90deg, #0f3380 0%, #1a4db2 100%)',
@@ -75,7 +84,7 @@ const workshops: Workshop[] = [
 
 const FLIP_BACK_DELAY_MS = 15000
 
-function WorkshopCard({ title, backTitle, description, gradient }: Workshop) {
+function WorkshopCard({ titleLines, backTitle, title, description, gradient }: Workshop) {
   const [flipped, setFlipped] = useState(false)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -114,12 +123,14 @@ function WorkshopCard({ title, backTitle, description, gradient }: Workshop) {
         transition={{ duration: 0.5, ease: 'easeInOut' }}
       >
         <div
-          className="absolute inset-0 flex items-end overflow-clip rounded-lg p-4 [backface-visibility:hidden]"
+          className="absolute inset-0 flex flex-col items-start justify-end overflow-clip rounded-lg p-4 [backface-visibility:hidden]"
           style={{ backgroundImage: gradient }}
         >
-          <p className="text-base font-semibold leading-[1.25] text-white">
-            {title}
-          </p>
+          {titleLines.map((line) => (
+            <p key={line} className="text-base font-semibold leading-[1.25] text-white">
+              {line}
+            </p>
+          ))}
         </div>
         <div
           className="absolute inset-0 flex flex-col gap-2 overflow-clip rounded-lg px-4 pb-[11px] pt-4 [backface-visibility:hidden]"
@@ -133,21 +144,39 @@ function WorkshopCard({ title, backTitle, description, gradient }: Workshop) {
   )
 }
 
-function DecorCell({
+/** A decor cell whose background + icon are baked into a single SVG. */
+function DecorCellFull({ src, className = '' }: { src: string; className?: string }) {
+  return (
+    <div
+      className={`relative hidden h-[130px] w-[171px] shrink-0 overflow-clip rounded-lg md:block ${className}`}
+    >
+      <img src={src} alt="" className="absolute inset-0 size-full" />
+    </div>
+  )
+}
+
+/** A decor cell with a solid background and a separate icon inset at an exact, design-specified padding. */
+function DecorCellIcon({
   src,
   bg,
+  inset,
   className = '',
 }: {
   src: string
-  bg?: string
+  bg: string
+  inset: string
   className?: string
 }) {
   return (
     <div
-      className={`hidden h-[130px] w-[171px] shrink-0 overflow-clip rounded-lg md:block ${className}`}
-      style={bg ? { backgroundColor: bg } : undefined}
+      className={`relative hidden h-[130px] w-[171px] shrink-0 overflow-clip rounded-lg md:block ${className}`}
+      style={{ backgroundColor: bg }}
     >
-      <img src={src} alt="" className="size-full object-contain" />
+      <div className="relative size-full">
+        <div className="absolute" style={{ inset }}>
+          <img src={src} alt="" className="absolute inset-0 size-full" />
+        </div>
+      </div>
     </div>
   )
 }
@@ -169,39 +198,43 @@ export default function WorkshopOfferings() {
         </p>
       </Reveal>
 
-      {/* Desktop "lego grid" layout matching the design */}
-      <div className="hidden w-full flex-col items-end gap-1.5 rounded-xl bg-white md:flex">
-        <div className="flex w-full items-center gap-1.5">
+      {/* Desktop "lego grid" layout matching the design exactly: row alignment,
+          decor cell order, and icon insets are intentionally hardcoded to
+          match the Figma spec — do not rearrange. */}
+      <div className="hidden w-full flex-col gap-1 rounded-xl bg-white md:flex">
+        <div className="flex w-full items-center justify-end gap-1.5">
           <WorkshopCard {...workshops[0]} />
-          <DecorCell src={decorCell1} />
+          <DecorCellFull src={row1Decor} />
           <WorkshopCard {...workshops[1]} />
         </div>
         <div className="flex w-full items-center gap-1.5">
           <WorkshopCard {...workshops[2]} />
-          <DecorCell src={group134} bg="#edf2fa" />
-          <DecorCell src={group133} bg="#f7edf2" />
+          <DecorCellIcon
+            src={row2DecorAIcon}
+            bg="#edf2fa"
+            inset="15.63% 23.87% 15.62% 23.87%"
+          />
+          <DecorCellIcon src={row2DecorBIcon} bg="#f7edf2" inset="22.5% 29.59%" />
           <WorkshopCard {...workshops[3]} />
-          <DecorCell src={decorCell2} />
         </div>
-        <div className="flex w-full items-center gap-1.5">
-          <DecorCell src={decorCell3} />
+        <div className="flex w-full items-center justify-end gap-1.5">
+          <DecorCellFull src={row3DecorA} />
           <WorkshopCard {...workshops[4]} />
-          <DecorCell src={decorCell4} />
+          <DecorCellFull src={row3DecorB} />
           <WorkshopCard {...workshops[5]} />
         </div>
-        <div className="flex w-full items-center justify-between">
-          <DecorCell src={decorCell5} />
-          <div className="flex items-center gap-1.5">
-            <DecorCell src={decorCell6} />
-            <WorkshopCard {...workshops[6]} />
-            <DecorCell src={group130} bg="#f0f7f7" />
-          </div>
-        </div>
         <div className="flex w-full items-center gap-1.5">
-          <DecorCell src={decorCell7} />
+          <DecorCellFull src={row4DecorA} />
+          <DecorCellFull src={row4DecorB} />
+          <DecorCellFull src={row4DecorC} />
+          <WorkshopCard {...workshops[6]} />
+          <DecorCellIcon src={row4DecorDIcon} bg="#f0f7f7" inset="30% 28.65% 30.77% 28.65%" />
+        </div>
+        <div className="flex w-full items-center justify-end gap-1.5">
           <WorkshopCard {...workshops[7]} />
-          <DecorCell src={decorCell8} />
-          <DecorCell src={group128} bg="#f7f0f0" />
+          <DecorCellFull src={row5DecorA} />
+          <DecorCellFull src={row5DecorB} />
+          <DecorCellIcon src={row5DecorCIcon} bg="#f7f0f0" inset="22.5% 31.87%" />
         </div>
       </div>
 
