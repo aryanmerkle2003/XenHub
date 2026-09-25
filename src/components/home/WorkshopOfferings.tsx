@@ -225,14 +225,14 @@ export default function WorkshopOfferings() {
         </div>
         <div className="flex w-full items-center gap-1.5">
           <DecorCellFull src={row4DecorA} />
+          <WorkshopCard {...workshops[6]} />
           <DecorCellFull src={row4DecorB} />
           <DecorCellFull src={row4DecorC} />
-          <WorkshopCard {...workshops[6]} />
           <DecorCellIcon src={row4DecorDIcon} bg="#f0f7f7" inset="30% 28.65% 30.77% 28.65%" />
         </div>
         <div className="flex w-full items-center justify-end gap-1.5">
-          <WorkshopCard {...workshops[7]} />
           <DecorCellFull src={row5DecorA} />
+          <WorkshopCard {...workshops[7]} />
           <DecorCellFull src={row5DecorB} />
           <DecorCellIcon src={row5DecorCIcon} bg="#f7f0f0" inset="22.5% 31.87%" />
         </div>
