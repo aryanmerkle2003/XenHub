@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
-import iconChevronDown from '../../assets/images/icon-chevron-down.svg'
+import iconChevronFaqOpen from '../../assets/images/icon-chevron-faq-open.svg'
+import iconChevronFaqClosed from '../../assets/images/icon-chevron-faq-closed.svg'
 import { faqSections } from '../../data/faqs'
 
 function FaqRow({
@@ -28,9 +29,9 @@ function FaqRow({
       >
         <p className="text-[15px] font-semibold leading-[1.4] text-[#111827]">{question}</p>
         <img
-          src={iconChevronDown}
+          src={isOpen ? iconChevronFaqOpen : iconChevronFaqClosed}
           alt=""
-          className={`size-6 shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          className="size-6 shrink-0"
         />
       </button>
       <AnimatePresence initial={false}>
