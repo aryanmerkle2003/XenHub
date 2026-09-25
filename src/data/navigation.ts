@@ -20,11 +20,11 @@ export const navSections: NavSection[] = [
   {
     title: 'Pitch',
     items: [
-      { label: 'Presentation Decks' },
+      { label: 'Presentation Decks', to: '/presentation-decks' },
       { label: 'Case Studies', comingSoon: true },
-      { label: 'XENBooks Libraries' },
+      { label: 'XENBooks Library', to: '/xenbooks-library' },
       { label: 'XEN Media' },
-      { label: 'XEN FAQs' },
+      { label: 'XEN FAQs', to: '/xen-faqs' },
     ],
   },
   {
