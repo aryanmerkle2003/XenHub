@@ -53,7 +53,7 @@ export default function PresentationDecks() {
                 <img
                   src={deck.thumbnail}
                   alt={`${deck.id}-thumbnail`}
-                  className="h-[160px] w-full object-cover"
+                  className="aspect-video w-full object-cover"
                 />
                 <div className="flex flex-col gap-4 p-5">
                   <div className="flex flex-col gap-2">
@@ -64,7 +64,7 @@ export default function PresentationDecks() {
                   </div>
                   <button
                     type="button"
-                    className="flex w-fit items-center gap-2 rounded-lg bg-[#eee] px-3.5 py-2 text-[13px] font-medium text-[#374151] transition-colors hover:bg-[#e2e2e2]"
+                    className="flex w-fit items-center gap-2 rounded-lg bg-brand px-3.5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-brand-dark"
                   >
                     <img src={downloadIcon} alt="" className="size-4" />
                     PDF
