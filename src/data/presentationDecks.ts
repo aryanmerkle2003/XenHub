@@ -6,6 +6,8 @@ export type PresentationDeck = {
   title: string
   subtitle: string
   thumbnail: string
+  pdfUrl?: string
+  pptUrl?: string
 }
 
 export const presentationDecks: PresentationDeck[] = [

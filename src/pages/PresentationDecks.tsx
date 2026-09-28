@@ -62,13 +62,24 @@ export default function PresentationDecks() {
                       {deck.subtitle}
                     </p>
                   </div>
-                  <button
-                    type="button"
-                    className="flex w-fit items-center gap-2 rounded-lg bg-brand px-3.5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-brand-dark"
-                  >
-                    <img src={downloadIcon} alt="" className="size-4" />
-                    PDF
-                  </button>
+                  <div className="flex items-center gap-4">
+                    <a
+                      href={deck.pdfUrl ?? '#'}
+                      download
+                      className="flex w-fit items-center gap-2 rounded-lg bg-brand px-3.5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-brand-dark"
+                    >
+                      <img src={downloadIcon} alt="" className="size-4" />
+                      PDF
+                    </a>
+                    <a
+                      href={deck.pptUrl ?? '#'}
+                      download
+                      className="flex w-fit items-center gap-2 rounded-lg bg-brand px-3.5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-brand-dark"
+                    >
+                      <img src={downloadIcon} alt="" className="size-4" />
+                      PPT
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
