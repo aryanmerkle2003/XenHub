@@ -6,6 +6,7 @@ import PresentationDecks from './pages/PresentationDecks'
 import WorkshopOverview from './pages/WorkshopOverview'
 import XenBooksLibrary from './pages/XenBooksLibrary'
 import XenFaqs from './pages/XenFaqs'
+import XenTools from './pages/XenTools'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/xenbooks-library" element={<XenBooksLibrary />} />
       <Route path="/xen-faqs" element={<XenFaqs />} />
       <Route path="/connect-with-us" element={<ConnectWithUs />} />
+      <Route path="/xen-tools" element={<XenTools />} />
     </Routes>
   )
 }
