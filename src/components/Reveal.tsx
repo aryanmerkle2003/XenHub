@@ -1,5 +1,5 @@
 import { motion, type Variants } from 'framer-motion'
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -11,16 +11,19 @@ export default function Reveal({
   delay = 0,
   className,
   id,
+  style,
 }: {
   children?: ReactNode
   delay?: number
   className?: string
   id?: string
+  style?: CSSProperties
 }) {
   return (
     <motion.div
       id={id}
       className={className}
+      style={style}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
