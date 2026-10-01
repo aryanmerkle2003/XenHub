@@ -1,39 +1,39 @@
+import avatarSaranic from '../assets/images/team/saranic-banerjee.jpg'
+import avatarKapil from '../assets/images/team/kapil-dwivedi.jpg'
+import avatarMelinda from '../assets/images/team/melinda-rodrigues.jpg'
+import avatarKhushi from '../assets/images/team/khushi-kavathekar.jpg'
+import avatarSaadeen from '../assets/images/team/saadeen-anwar.jpg'
+
 export type Spoc = {
   name: string
   role: string
-  initials: string
-  accent: string
+  avatar: string
 }
 
 export const spocs: Spoc[] = [
   {
     name: 'Saranic Banerjee',
     role: 'Experience Strategy Lead',
-    initials: 'SB',
-    accent: '#0328d1',
+    avatar: avatarSaranic,
   },
   {
     name: 'Kapil Dwivedi',
     role: 'Content Strategist',
-    initials: 'KD',
-    accent: '#e25454',
+    avatar: avatarKapil,
   },
   {
     name: 'Melinda Rodrigues',
     role: 'Lead Strategy Analyst',
-    initials: 'MR',
-    accent: '#462e6c',
+    avatar: avatarMelinda,
   },
   {
     name: 'Khushi Kavathekar',
     role: 'Senior Strategist',
-    initials: 'KK',
-    accent: '#1e1eb5',
+    avatar: avatarKhushi,
   },
   {
     name: 'Saadeen Anwar',
     role: 'Experience Strategist',
-    initials: 'SA',
-    accent: '#0326d1',
+    avatar: avatarSaadeen,
   },
 ]

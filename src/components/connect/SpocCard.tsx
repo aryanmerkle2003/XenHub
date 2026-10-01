@@ -4,15 +4,14 @@ import type { Spoc } from '../../data/spocs'
 
 const CONTACT_EMAIL = 'xen.core@merkle.com'
 
-export default function SpocCard({ name, role, initials, accent }: Spoc) {
+export default function SpocCard({ name, role, avatar }: Spoc) {
   return (
     <div className="group flex h-[112px] flex-1 items-center gap-4 rounded-xl border border-[#e5e8ec] bg-[#f9fafb] p-4">
-      <div
-        className="flex size-14 shrink-0 items-center justify-center rounded-full text-[15px] font-semibold text-white transition-transform duration-200 ease-out group-hover:scale-[1.06]"
-        style={{ backgroundColor: accent }}
-      >
-        {initials}
-      </div>
+      <img
+        src={avatar}
+        alt={name}
+        className="size-14 shrink-0 rounded-full object-cover transition-transform duration-200 ease-out group-hover:scale-[1.06]"
+      />
       <div className="flex flex-1 items-center justify-between gap-2">
         <div className="flex flex-col gap-1">
           <p className="text-[12px] font-medium uppercase text-brand">{role}</p>
