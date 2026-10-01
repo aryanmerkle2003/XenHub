@@ -22,5 +22,9 @@ export const presentationDecks: PresentationDeck[] = [
     title: 'XEN Reimagined',
     subtitle: 'A look at how the XEN experience has been reimagined.',
     thumbnail: deckXenReimagined,
+    pdfUrl:
+      'https://globalappsportal.sharepoint.com/:b:/s/XENTeam/IQDARd0cZOxqRpX6Kl-cEMd6ASf5AdfEePRm7iJ0pTeLnXY?e=sFWQoI&download=1',
+    pptUrl:
+      'https://globalappsportal.sharepoint.com/:p:/s/XENTeam/IQALnW5ijdDDSpQIPo8gtbA0AfP2GpW5Ku9lpCzTp0BPEr8?e=ENcDdx&download=1',
   },
 ]
