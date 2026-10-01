@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
+import ConnectWithUs from './pages/ConnectWithUs'
 import ExploreXen from './pages/ExploreXen'
 import Home from './pages/Home'
 import PresentationDecks from './pages/PresentationDecks'
@@ -15,6 +16,7 @@ function App() {
       <Route path="/presentation-decks" element={<PresentationDecks />} />
       <Route path="/xenbooks-library" element={<XenBooksLibrary />} />
       <Route path="/xen-faqs" element={<XenFaqs />} />
+      <Route path="/connect-with-us" element={<ConnectWithUs />} />
     </Routes>
   )
 }

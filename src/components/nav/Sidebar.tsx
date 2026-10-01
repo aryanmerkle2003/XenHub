@@ -1,15 +1,11 @@
-import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import xenHubLogo from '../../assets/images/xen-hub-logo.png'
 import iconSearch from '../../assets/images/icon-search.svg'
 import iconChevronDown from '../../assets/images/icon-chevron-down.svg'
-import iconSun from '../../assets/images/icon-sun.svg'
-import iconMoon from '../../assets/images/icon-moon.svg'
 import { navSections } from '../../data/navigation'
 
 export default function Sidebar() {
   const { pathname } = useLocation()
-  const [isLight, setIsLight] = useState(true)
 
   return (
     <aside className="fixed inset-y-0 left-0 z-20 flex w-[260px] flex-col overflow-y-auto border-r border-[#edeff2] bg-white p-4">
@@ -70,43 +66,12 @@ export default function Sidebar() {
       <div className="min-h-9 flex-1" />
 
       <div className="flex flex-col gap-3">
-        <div className="flex h-[41px] w-[77px] items-center gap-[1.5px] rounded-full bg-[#e6e6e6] p-[3px]">
-          <button
-            type="button"
-            aria-label="Light mode (dark mode coming soon)"
-            onClick={() => setIsLight(true)}
-            className={`flex size-[34.7px] items-center justify-center rounded-full transition-colors ${
-              isLight ? 'bg-brand' : ''
-            }`}
-          >
-            <img
-              src={iconSun}
-              alt=""
-              className={`size-[19px] ${isLight ? 'brightness-0 invert' : ''}`}
-            />
-          </button>
-          <button
-            type="button"
-            aria-label="Dark mode (coming soon)"
-            onClick={() => setIsLight(false)}
-            className={`flex size-[34.7px] items-center justify-center rounded-full transition-colors ${
-              !isLight ? 'bg-brand' : ''
-            }`}
-          >
-            <img
-              src={iconMoon}
-              alt=""
-              className={`size-[19px] ${!isLight ? 'brightness-0 invert' : ''}`}
-            />
-          </button>
-        </div>
-
-        <a
-          href="#contact"
+        <Link
+          to="/connect-with-us"
           className="flex h-[41px] w-full items-center justify-center rounded-lg bg-brand text-[14px] font-semibold text-white transition-colors hover:bg-brand-dark"
         >
           Connect with us
-        </a>
+        </Link>
       </div>
     </aside>
   )
