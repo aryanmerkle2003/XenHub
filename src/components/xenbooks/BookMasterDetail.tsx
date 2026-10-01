@@ -1,27 +1,30 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
+import '../../polyfills'
 import { Document, Page, pdfjs } from 'react-pdf'
 import downloadIcon from '../../assets/images/download-icon.svg'
 import iconChevronLeft from '../../assets/images/icon-chevron-left.svg'
 import iconChevronRight from '../../assets/images/icon-chevron-right.svg'
 import { xenBooks } from '../../data/xenBooks'
 
-// Loaded from a CDN for now since no real PDF exists yet to test a bundled
-// worker against; swap for a bundled `pdfjs-dist` worker when wiring in the
-// first real file.
-pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.mjs',
+  import.meta.url,
+).toString()
 
 const SPREAD_SIZE = 2
 
 export default function BookMasterDetail() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [pageStart, setPageStart] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
   const activeBook = xenBooks[activeIndex]
-  const pageEnd = Math.min(pageStart + SPREAD_SIZE - 1, activeBook.totalPages)
+  const pageEnd = Math.min(pageStart + SPREAD_SIZE - 1, totalPages)
 
   const selectBook = (index: number) => {
     setActiveIndex(index)
     setPageStart(1)
+    setTotalPages(0)
   }
 
   const goToPreviousSpread = () => {
@@ -30,7 +33,7 @@ export default function BookMasterDetail() {
 
   const goToNextSpread = () => {
     setPageStart((prev) =>
-      Math.min(activeBook.totalPages - SPREAD_SIZE + 1, prev + SPREAD_SIZE),
+      Math.min(totalPages, prev + SPREAD_SIZE),
     )
   }
 
@@ -76,13 +79,22 @@ export default function BookMasterDetail() {
                 <p className="text-2xl font-bold text-[#05051e]">{activeBook.title}</p>
               </div>
               <div className="flex flex-col gap-3">
-                {activeBook.pdfUrl ? (
-                  <Document file={activeBook.pdfUrl}>
-                    <Page pageNumber={pageStart} width={654} />
-                  </Document>
-                ) : (
-                  <div className="h-[180px] w-full rounded-lg bg-[#f3f4f6]" />
-                )}
+                <Document
+                  file={activeBook.pdfUrl}
+                  onLoadSuccess={({ numPages }) => setTotalPages(numPages)}
+                  loading={<div className="h-[180px] w-full rounded-lg bg-[#f3f4f6]" />}
+                  className="flex gap-2"
+                >
+                  {Array.from({ length: pageEnd - pageStart + 1 }, (_, i) => (
+                    <Page
+                      key={pageStart + i}
+                      pageNumber={pageStart + i}
+                      width={264}
+                      renderTextLayer={false}
+                      renderAnnotationLayer={false}
+                    />
+                  ))}
+                </Document>
                 <p className="text-[13px] leading-[18px] text-[#6b7280]">{activeBook.caption}</p>
               </div>
             </div>
@@ -96,7 +108,7 @@ export default function BookMasterDetail() {
               <span className="rounded bg-[#f3f4f6] px-2 py-1 text-[13px] font-semibold text-[#05051e]">
                 {pageStart === pageEnd ? pageStart : `${pageStart}-${pageEnd}`}
               </span>
-              <span className="text-[13px] text-[#6b7280]">of {activeBook.totalPages}</span>
+              <span className="text-[13px] text-[#6b7280]">of {totalPages}</span>
             </div>
             <div className="flex items-center gap-4">
               <button
@@ -111,7 +123,7 @@ export default function BookMasterDetail() {
               <button
                 type="button"
                 onClick={goToNextSpread}
-                disabled={pageEnd >= activeBook.totalPages}
+                disabled={pageEnd >= totalPages}
                 aria-label="Next page"
                 className="flex size-9 items-center justify-center rounded-full border border-[#e4e4e4] bg-white transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
               >
@@ -120,13 +132,14 @@ export default function BookMasterDetail() {
             </div>
           </div>
 
-          <button
-            type="button"
+          <a
+            href={activeBook.downloadUrl}
+            download
             className="flex items-center gap-2 rounded-lg bg-brand px-4 py-2.5 text-[13px] font-medium text-white transition-colors hover:bg-brand-dark"
           >
             <img src={downloadIcon} alt="" className="size-4" />
             Download XENBook
-          </button>
+          </a>
         </div>
       </div>
     </div>
