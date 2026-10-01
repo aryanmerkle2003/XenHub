@@ -33,6 +33,6 @@ export const xenBooks: XenBook[] = [
     caption: 'Key findings and recommendations for the transformation.',
     pdfUrl: '/xenbooks/tdk-invensense.pdf',
     downloadUrl:
-      'https://globalappsportal.sharepoint.com/:b:/s/XENTeam/IQDZQB9hL57wS7fWwJ49vifiAYkA6eronGhS1ZTFDm7xBP8?e=n2xMWv&download=1',
+      'https://globalappsportal.sharepoint.com/:b:/s/XENTeam/IQCYBlTcEHC3T6A45DWxO8WNAZdfJhphW81MhvKl-hYxxE8?e=2MToWm&download=1',
   },
 ]
