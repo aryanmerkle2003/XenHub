@@ -1,17 +1,18 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
-import row1Decor from '../../assets/images/row1-decor.svg'
-import row2DecorAIcon from '../../assets/images/row2-decor-a-icon.svg'
-import row2DecorBIcon from '../../assets/images/row2-decor-b-icon.svg'
-import row3DecorA from '../../assets/images/row3-decor-a.svg'
-import row3DecorB from '../../assets/images/row3-decor-b.svg'
-import row4DecorA from '../../assets/images/row4-decor-a.svg'
-import row4DecorB from '../../assets/images/row4-decor-b.svg'
-import row4DecorC from '../../assets/images/row4-decor-c.svg'
-import row4DecorDIcon from '../../assets/images/row4-decor-d-icon.svg'
-import row5DecorA from '../../assets/images/row5-decor-a.svg'
-import row5DecorB from '../../assets/images/row5-decor-b.svg'
-import row5DecorCIcon from '../../assets/images/row5-decor-c-icon.svg'
+import IceCreamCell from './decor/IceCreamCell'
+import GuitarCell from './decor/GuitarCell'
+import SlippersCell from './decor/SlippersCell'
+import FootballCell from './decor/FootballCell'
+import KettleCell from './decor/KettleCell'
+import CoffeeCell from './decor/CoffeeCell'
+import LightbulbCell from './decor/LightbulbCell'
+import HatCell from './decor/HatCell'
+import CassetteCell from './decor/CassetteCell'
+import CameraCell from './decor/CameraCell'
+import PointerCell from './decor/PointerCell'
+import CookieJarCell from './decor/CookieJarCell'
 import Reveal from '../Reveal'
 
 type Workshop = {
@@ -144,43 +145,6 @@ function WorkshopCard({ titleLines, backTitle, title, description, gradient }: W
   )
 }
 
-/** A decor cell whose background + icon are baked into a single SVG. */
-function DecorCellFull({ src, className = '' }: { src: string; className?: string }) {
-  return (
-    <div
-      className={`relative hidden h-[130px] w-[171px] shrink-0 overflow-clip rounded-lg md:block ${className}`}
-    >
-      <img src={src} alt="" className="absolute inset-0 size-full" />
-    </div>
-  )
-}
-
-/** A decor cell with a solid background and a separate icon inset at an exact, design-specified padding. */
-function DecorCellIcon({
-  src,
-  bg,
-  inset,
-  className = '',
-}: {
-  src: string
-  bg: string
-  inset: string
-  className?: string
-}) {
-  return (
-    <div
-      className={`relative hidden h-[130px] w-[171px] shrink-0 overflow-clip rounded-lg md:block ${className}`}
-      style={{ backgroundColor: bg }}
-    >
-      <div className="relative size-full">
-        <div className="absolute" style={{ inset }}>
-          <img src={src} alt="" className="absolute inset-0 size-full" />
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export default function WorkshopOfferings() {
   return (
     <section
@@ -188,9 +152,20 @@ export default function WorkshopOfferings() {
       className="flex w-full flex-col gap-7 px-6 py-14 md:px-[76px] md:py-[56px]"
     >
       <Reveal>
-        <h2 className="text-2xl font-semibold text-ink md:text-[36px]">
-          Workshop Offerings
-        </h2>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <h2 className="text-2xl font-semibold text-ink md:text-[36px]">
+            Workshop Offerings
+          </h2>
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              to="/workshop-overview"
+              className="flex h-[41px] items-center justify-center gap-2 rounded-lg border border-brand-dark px-5 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-dark hover:text-white"
+            >
+              Explore XEN Workshops
+              <span aria-hidden>→</span>
+            </Link>
+          </motion.div>
+        </div>
         <p className="mt-2 max-w-[860px] text-[15px] leading-6 text-body">
           Eight workshop offerings designed to help organizations align on
           priorities, uncover opportunities, design solutions, and drive
@@ -204,37 +179,33 @@ export default function WorkshopOfferings() {
       <div className="hidden w-full flex-col gap-1 rounded-xl bg-white md:flex">
         <div className="flex w-full items-center justify-end gap-1.5">
           <WorkshopCard {...workshops[0]} />
-          <DecorCellFull src={row1Decor} />
+          <IceCreamCell className="hidden md:block" />
           <WorkshopCard {...workshops[1]} />
         </div>
         <div className="flex w-full items-center gap-1.5">
           <WorkshopCard {...workshops[2]} />
-          <DecorCellIcon
-            src={row2DecorAIcon}
-            bg="#edf2fa"
-            inset="15.63% 23.87% 15.62% 23.87%"
-          />
-          <DecorCellIcon src={row2DecorBIcon} bg="#f7edf2" inset="22.5% 29.59%" />
+          <GuitarCell className="hidden md:block" />
+          <SlippersCell className="hidden md:block" />
           <WorkshopCard {...workshops[3]} />
         </div>
         <div className="flex w-full items-center justify-end gap-1.5">
-          <DecorCellFull src={row3DecorA} />
+          <FootballCell className="hidden md:block" />
           <WorkshopCard {...workshops[4]} />
-          <DecorCellFull src={row3DecorB} />
+          <KettleCell className="hidden md:block" />
           <WorkshopCard {...workshops[5]} />
         </div>
         <div className="flex w-full items-center gap-1.5">
-          <DecorCellFull src={row4DecorA} />
+          <CoffeeCell className="hidden md:block" />
           <WorkshopCard {...workshops[6]} />
-          <DecorCellFull src={row4DecorB} />
-          <DecorCellFull src={row4DecorC} />
-          <DecorCellIcon src={row4DecorDIcon} bg="#f0f7f7" inset="30% 28.65% 30.77% 28.65%" />
+          <LightbulbCell className="hidden md:block" />
+          <HatCell className="hidden md:block" />
+          <CassetteCell className="hidden md:block" />
         </div>
         <div className="flex w-full items-center justify-end gap-1.5">
-          <DecorCellFull src={row5DecorA} />
+          <CameraCell className="hidden md:block" />
           <WorkshopCard {...workshops[7]} />
-          <DecorCellFull src={row5DecorB} />
-          <DecorCellIcon src={row5DecorCIcon} bg="#f7f0f0" inset="22.5% 31.87%" />
+          <PointerCell className="hidden md:block" />
+          <CookieJarCell className="hidden md:block" />
         </div>
       </div>
 
