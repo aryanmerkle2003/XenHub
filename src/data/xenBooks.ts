@@ -3,17 +3,36 @@ export type XenBook = {
   number: string
   title: string
   caption: string
-  totalPages: number
-  /** Real PDF URL, once available — when unset, the viewer shows the placeholder spread. */
-  pdfUrl?: string
+  pdfUrl: string
+  downloadUrl: string
 }
 
-const titles = ['Capacity Planning', 'Fidelity Investments', 'TDK Invensense']
-
-export const xenBooks: XenBook[] = titles.map((title, i) => ({
-  id: title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
-  number: String(i + 1).padStart(2, '0'),
-  title,
-  caption: 'Key findings and recommendations for the transformation.',
-  totalPages: 24,
-}))
+export const xenBooks: XenBook[] = [
+  {
+    id: 'fidelity-investments',
+    number: '01',
+    title: 'Fidelity Investments',
+    caption: 'Key findings and recommendations for the transformation.',
+    pdfUrl: '/xenbooks/fidelity-investments.pdf',
+    downloadUrl:
+      'https://globalappsportal.sharepoint.com/:b:/s/XENTeam/IQCOvw5JyVQ6Q64lQY50jStvAVX-TpT_W7IDjUAWY2ncaoU?e=uDw91D&download=1',
+  },
+  {
+    id: 'capacity-planning',
+    number: '02',
+    title: 'Capacity Planning',
+    caption: 'Key findings and recommendations for the transformation.',
+    pdfUrl: '/xenbooks/capacity-planning.pdf',
+    downloadUrl:
+      'https://globalappsportal.sharepoint.com/:b:/s/XENTeam/IQDZQB9hL57wS7fWwJ49vifiAYkA6eronGhS1ZTFDm7xBP8?e=Qb28fM&download=1',
+  },
+  {
+    id: 'tdk-invensense',
+    number: '03',
+    title: 'TDK Invensense',
+    caption: 'Key findings and recommendations for the transformation.',
+    pdfUrl: '/xenbooks/tdk-invensense.pdf',
+    downloadUrl:
+      'https://globalappsportal.sharepoint.com/:b:/s/XENTeam/IQDZQB9hL57wS7fWwJ49vifiAYkA6eronGhS1ZTFDm7xBP8?e=n2xMWv&download=1',
+  },
+]
