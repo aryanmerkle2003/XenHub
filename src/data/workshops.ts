@@ -10,6 +10,7 @@ export type Workshop = {
   heading: string
   overview: string
   phases: WorkshopPhase[]
+  briefUrl: string
 }
 
 const rawWorkshops: Omit<Workshop, 'id' | 'number'>[] = [
@@ -18,6 +19,8 @@ const rawWorkshops: Omit<Workshop, 'id' | 'number'>[] = [
     heading: 'Vision Alignment & Roadmapping Workshop',
     overview:
       'Align stakeholders around a shared vision, prioritize strategic initiatives, and create a phased roadmap that turns ambition into actionable next steps.',
+    briefUrl:
+      'https://globalappsportal.sharepoint.com/:b:/s/XENTeam/IQDLuthx2b1iRL8PNFoeTFJ4AaR28dbuZiM2Dm9bRow7x44?e=iEDh98&download=1',
     phases: [
       {
         title: 'Evaluate',
@@ -41,6 +44,8 @@ const rawWorkshops: Omit<Workshop, 'id' | 'number'>[] = [
     heading: 'Discovery & Definition Workshop',
     overview:
       "Gain clarity on business needs, user challenges, and experience gaps to ensure you're solving the right problem and prioritizing the most valuable opportunities.",
+    briefUrl:
+      'https://globalappsportal.sharepoint.com/:b:/s/XENTeam/IQBGgkyZ07piT7PYhOV1N6-3AZxeI8boby1gUbEaqTqsRWw?e=S4fcmt&download=1',
     phases: [
       {
         title: 'Discover',
@@ -61,6 +66,8 @@ const rawWorkshops: Omit<Workshop, 'id' | 'number'>[] = [
     heading: 'Business AI Workshop',
     overview:
       'Identify where AI can deliver the greatest business value, prioritize practical use cases, and create a roadmap for successful adoption to drive meaningful transformation across an organisation.',
+    briefUrl:
+      'https://globalappsportal.sharepoint.com/:b:/s/XENTeam/IQBZcnZpe19CRbUAs0lqfGYcAQfsLxEZEdvXVagSktOKlrk?e=ofIsla&download=1',
     phases: [
       {
         title: 'Discover',
@@ -82,6 +89,8 @@ const rawWorkshops: Omit<Workshop, 'id' | 'number'>[] = [
     heading: 'Process Design Workshop',
     overview:
       'Design efficient, user-centered processes by identifying inefficiencies, uncovering automation opportunities, and creating a scalable path forward.',
+    briefUrl:
+      'https://globalappsportal.sharepoint.com/:b:/s/XENTeam/IQArRUPC4jp7S4v5X14eXEORAehUTQ3rFgS4gzLWFuKLxJk?e=vnSZTL&download=1',
     phases: [
       {
         title: 'Discover',
@@ -103,6 +112,8 @@ const rawWorkshops: Omit<Workshop, 'id' | 'number'>[] = [
     heading: 'Experience Trends Alignment Workshop',
     overview:
       'Assess how well your digital experiences align with evolving user expectations and identify opportunities to future-ready your transformation efforts.',
+    briefUrl:
+      'https://globalappsportal.sharepoint.com/:b:/s/XENTeam/IQDUdRb6ERwBSanKD9lyK4aNAbk77A93RUuJcY-hNWUhgJU?e=rIpAd7&download=1',
     phases: [
       {
         title: 'Determine',
@@ -135,6 +146,8 @@ const rawWorkshops: Omit<Workshop, 'id' | 'number'>[] = [
     heading: 'Product Adoption & Retention Workshop',
     overview:
       "Uncover what's limiting adoption and engagement, then co-create solutions that improve user experience, retention, and long-term value.",
+    briefUrl:
+      'https://globalappsportal.sharepoint.com/:b:/s/XENTeam/IQAECMsgblIOR5FHL6ZeeG8dAWl3AdUxj1dlZixCWKXEYLA?e=jNviGH&download=1',
     phases: [
       {
         title: 'Pre-Discovery',
@@ -155,6 +168,8 @@ const rawWorkshops: Omit<Workshop, 'id' | 'number'>[] = [
     heading: 'Service Design Workshop',
     overview:
       'Identify service gaps and design scalable, human-centered experiences that create seamless connections across people, processes, and platforms.',
+    briefUrl:
+      'https://globalappsportal.sharepoint.com/:b:/s/XENTeam/IQDi8tlkrZcmSrKSViI4PACgAUB9tzkK9E6xr59e6Ju02-A?e=22NyIS&download=1',
     phases: [
       {
         title: 'Identify',
@@ -176,6 +191,8 @@ const rawWorkshops: Omit<Workshop, 'id' | 'number'>[] = [
     heading: 'Solution Rollout Strategy Workshop',
     overview:
       'Develop a structured rollout strategy that aligns teams, addresses adoption barriers, and supports successful implementation and long-term adoption.',
+    briefUrl:
+      'https://globalappsportal.sharepoint.com/:b:/s/XENTeam/IQD_LxbEpJNpRqGWfcXR5pjQASMZAUQ2_5RZZcsXAmAQZCc?e=Wddrgj&download=1',
     phases: [
       {
         title: 'Planning',
