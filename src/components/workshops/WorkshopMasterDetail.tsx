@@ -70,13 +70,14 @@ export default function WorkshopMasterDetail() {
 
           <WorkshopJourney phases={activeWorkshop.phases} />
 
-          <button
-            type="button"
+          <a
+            href={activeWorkshop.briefUrl}
+            download
             className="flex w-fit items-center gap-2 rounded-lg bg-brand px-4 py-2.5 text-[13px] font-medium text-white transition-colors hover:bg-brand-dark"
           >
             <img src={downloadIcon} alt="" className="size-4" />
             Download Workshop Brief
-          </button>
+          </a>
         </motion.div>
       </AnimatePresence>
     </div>
