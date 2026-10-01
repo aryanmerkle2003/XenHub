@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
-import slide1 from '../../assets/images/slide-1.jpg'
-import slide2 from '../../assets/images/slide-2.png'
-import slide3 from '../../assets/images/slide-3.jpg'
+import slide1 from '../../assets/images/diff-slide-1.jpg'
+import slide2 from '../../assets/images/diff-slide-2.jpg'
+import slide3 from '../../assets/images/diff-slide-3.jpg'
 import { differentiatorGroups, differentiatorTabs } from '../../data/differentiators'
 
 const placeholderSlides = [slide1, slide2, slide3]
@@ -12,7 +12,7 @@ export default function DifferentiatorsTabs() {
 
   return (
     <div className="flex w-full flex-col items-start">
-      <div className="flex w-full items-start gap-1 border-b border-[#e5e7eb]">
+      <div className="flex w-full items-start gap-[5px] overflow-x-auto border-b border-[#e5e7eb]">
         {differentiatorTabs.map((tab) => {
           const active = tab.key === activeKey
           return (
@@ -21,10 +21,10 @@ export default function DifferentiatorsTabs() {
               type="button"
               onClick={() => setActiveKey(tab.key)}
               aria-selected={active}
-              className="group flex flex-col items-center gap-2 pt-3"
+              className="group flex shrink-0 flex-col items-center gap-2 px-6 pt-3 md:px-10"
             >
               <span
-                className={`whitespace-nowrap px-1 text-sm transition-colors ${
+                className={`whitespace-nowrap text-sm transition-colors ${
                   active
                     ? 'font-semibold text-brand-dark'
                     : 'font-medium text-[#6b7280] group-hover:text-[#111827]'
@@ -63,7 +63,7 @@ export default function DifferentiatorsTabs() {
                     key={i}
                     src={src}
                     alt={`${activeKey}-${group.key}-slide-${i + 1}`}
-                    className="h-full flex-1 rounded-[10px] object-cover"
+                    className="h-full min-w-0 flex-1 rounded-[10px] object-cover"
                   />
                 ))}
               </div>
