@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import '../../polyfills'
 import { Document, Page, pdfjs } from 'react-pdf'
 import downloadIcon from '../../assets/images/download-icon.svg'
@@ -16,7 +16,16 @@ export default function BookMasterDetail() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
+  const [pageWidth, setPageWidth] = useState(0)
+  const [pageBox, setPageBox] = useState<HTMLDivElement | null>(null)
   const activeBook = xenBooks[activeIndex]
+
+  useEffect(() => {
+    if (!pageBox) return
+    const observer = new ResizeObserver(([entry]) => setPageWidth(entry.contentRect.width))
+    observer.observe(pageBox)
+    return () => observer.disconnect()
+  }, [pageBox])
 
   const selectBook = (index: number) => {
     setActiveIndex(index)
@@ -66,7 +75,7 @@ export default function BookMasterDetail() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="flex min-h-[620px] w-full flex-col items-start rounded-tl-sm rounded-bl-sm border border-[#e4e4e4] bg-white shadow-[0px_12px_24px_0px_rgba(0,0,0,0.05)]"
+            className="flex w-full flex-col items-start rounded-tl-sm rounded-bl-sm border border-[#e4e4e4] bg-white shadow-[0px_12px_24px_0px_rgba(0,0,0,0.05)]"
           >
             <div className="flex w-full flex-col gap-6 p-8">
               <div className="flex flex-col gap-2">
@@ -76,18 +85,22 @@ export default function BookMasterDetail() {
                   {activeBook.description}
                 </p>
               </div>
-              <Document
-                file={activeBook.pdfUrl}
-                onLoadSuccess={({ numPages }) => setTotalPages(numPages)}
-                loading={<div className="aspect-video w-full rounded-lg bg-[#f3f4f6]" />}
-              >
-                <Page
-                  pageNumber={page}
-                  width={536}
-                  renderTextLayer={false}
-                  renderAnnotationLayer={false}
-                />
-              </Document>
+              <div ref={setPageBox} className="w-full">
+                <Document
+                  file={activeBook.pdfUrl}
+                  onLoadSuccess={({ numPages }) => setTotalPages(numPages)}
+                  loading={<div className="aspect-[4/3] w-full rounded-lg bg-[#f3f4f6]" />}
+                >
+                  {pageWidth > 0 && (
+                    <Page
+                      pageNumber={page}
+                      width={pageWidth}
+                      renderTextLayer={false}
+                      renderAnnotationLayer={false}
+                    />
+                  )}
+                </Document>
+              </div>
             </div>
           </motion.div>
         </AnimatePresence>

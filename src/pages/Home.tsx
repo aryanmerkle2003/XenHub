@@ -1,7 +1,6 @@
 import ConnectBanner from '../components/ConnectBanner'
 import Footer from '../components/Footer'
 import Hero from '../components/home/Hero'
-import RecentProject from '../components/home/RecentProject'
 import UsageSection from '../components/home/UsageSection'
 import WhatIsXen from '../components/home/WhatIsXen'
 import WorkshopOfferings from '../components/home/WorkshopOfferings'
@@ -22,7 +21,6 @@ export default function Home() {
       <WorkshopOfferings />
       <Divider />
       <XenTools />
-      <RecentProject />
       <Divider />
       <ConnectBanner />
       <Footer />
