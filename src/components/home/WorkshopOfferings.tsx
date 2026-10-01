@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import IceCreamCell from './decor/IceCreamCell'
 import GuitarCell from './decor/GuitarCell'
@@ -151,9 +152,20 @@ export default function WorkshopOfferings() {
       className="flex w-full flex-col gap-7 px-6 py-14 md:px-[76px] md:py-[56px]"
     >
       <Reveal>
-        <h2 className="text-2xl font-semibold text-ink md:text-[36px]">
-          Workshop Offerings
-        </h2>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <h2 className="text-2xl font-semibold text-ink md:text-[36px]">
+            Workshop Offerings
+          </h2>
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              to="/workshop-overview"
+              className="flex h-[41px] items-center justify-center gap-2 rounded-lg border border-brand-dark px-5 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-dark hover:text-white"
+            >
+              Explore XEN Workshops
+              <span aria-hidden>→</span>
+            </Link>
+          </motion.div>
+        </div>
         <p className="mt-2 max-w-[860px] text-[15px] leading-6 text-body">
           Eight workshop offerings designed to help organizations align on
           priorities, uncover opportunities, design solutions, and drive

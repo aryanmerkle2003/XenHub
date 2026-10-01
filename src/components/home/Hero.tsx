@@ -47,14 +47,14 @@ export default function Hero() {
               <span aria-hidden>→</span>
             </Link>
           </motion.div>
-          <motion.a
-            href="#contact"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="flex h-[41px] items-center justify-center rounded-lg border border-[#d9d9d9] bg-white px-6 text-sm font-semibold text-ink transition-colors hover:bg-gray-50"
-          >
-            Connect with Us
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              to="/connect-with-us"
+              className="flex h-[41px] items-center justify-center rounded-lg border border-[#d9d9d9] bg-white px-6 text-sm font-semibold text-ink transition-colors hover:bg-gray-50"
+            >
+              Connect with Us
+            </Link>
+          </motion.div>
         </div>
       </motion.div>
     </section>
