@@ -3,7 +3,8 @@ import { useState } from 'react'
 import slideLab from '../../assets/images/slide-1.jpg'
 import sapAppHausLogo from '../../assets/images/sap-apphaus-logo.png'
 import sapLogo from '../../assets/images/sap-logo.png'
-import sliderPhoto from '../../assets/images/slider-photo.jpg'
+import emptyRoom from '../../assets/images/slider-empty-room.jpg'
+import filledRoom from '../../assets/images/slider-filled-room.jpg'
 import unwiredPlaceholder from '../../assets/images/unwired-placeholder.png'
 import ComparisonSlider from './ComparisonSlider'
 
@@ -132,9 +133,10 @@ export default function WaysToExperience() {
             )}
             {activeKey === 'box' && (
               <ComparisonSlider
-                image={sliderPhoto}
-                beforeLabel="XEN-in-a-BOX, tinted view"
-                afterLabel="XEN-in-a-BOX, natural view"
+                leftImage={emptyRoom}
+                rightImage={filledRoom}
+                leftLabel="An empty meeting room"
+                rightLabel="The same room during a XEN workshop"
               />
             )}
             {activeKey === 'unwired' && (
