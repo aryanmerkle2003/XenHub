@@ -23,10 +23,10 @@ export default function OnThisPage({ sections }: { sections: PageSection[] }) {
           <a
             key={section.id}
             href={`#${section.id}`}
-            className="flex items-start rounded-lg"
+            className="flex items-stretch rounded-lg"
           >
             <span
-              className={`h-9 w-0.5 shrink-0 rounded-sm transition-colors ${
+              className={`min-h-9 w-0.5 shrink-0 rounded-sm transition-colors ${
                 active ? 'bg-[#2855f5]' : 'bg-[#e5e7eb]'
               }`}
             />

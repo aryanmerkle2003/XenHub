@@ -137,7 +137,7 @@ export const differentiatorTabs: DifferentiatorTab[] = [
     columns: [
       [
         {
-          highlight: 'Local',
+          highlight: 'Unpredictable',
           slides: [
             { src: engage1, caption: 'Set up the rooms for surprises' },
             { src: engage3, caption: 'AI-integrated activities' },
@@ -146,7 +146,7 @@ export const differentiatorTabs: DifferentiatorTab[] = [
       ],
       [
         {
-          highlight: 'Local',
+          highlight: 'Memorable',
           slides: [
             { src: engage2, caption: 'XENBooks' },
             { src: engage4, caption: 'Personalized badges' },
@@ -156,7 +156,7 @@ export const differentiatorTabs: DifferentiatorTab[] = [
       ],
       [
         {
-          highlight: 'Local',
+          highlight: 'AI-everywhere',
           slides: [
             { src: engage6, caption: 'AI as an orchestrator' },
             { src: engage7, caption: 'AI-enabled demos' },

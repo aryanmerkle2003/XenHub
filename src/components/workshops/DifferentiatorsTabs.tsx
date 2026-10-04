@@ -116,7 +116,7 @@ export default function DifferentiatorsTabs() {
               type="button"
               onClick={() => setActiveKey(tab.key)}
               aria-selected={active}
-              className="group flex shrink-0 flex-col items-center gap-2 px-6 pt-3 md:px-10"
+              className="group flex shrink-0 flex-col items-center gap-2 px-5 pt-3"
             >
               <span
                 className={`whitespace-nowrap text-sm transition-colors ${
