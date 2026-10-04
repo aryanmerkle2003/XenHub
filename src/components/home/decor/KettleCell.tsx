@@ -6,7 +6,6 @@ import smoke2 from '../../../assets/images/decor/kettle-smoke2.svg';
 import smoke3 from '../../../assets/images/decor/kettle-smoke3.svg';
 
 const D = 3;
-const R = { repeat: Infinity };
 const bodyScaleT = [0, 0.0533, 0.1067, 0.16, 0.2133, 0.2733, 0.3667, 0.4267, 0.4667, 0.4867, 0.54, 0.5867, 0.76, 0.8267, 0.8733, 1];
 const bodyScaleE = ['easeOut', 'easeInOut', 'easeInOut', 'easeInOut', 'easeInOut', 'easeOut', 'easeIn', 'easeOut', 'easeOut', 'easeIn', 'easeOut', 'easeOut', 'easeIn', 'easeOut', 'linear'] as const;
 

@@ -11,7 +11,6 @@ const yT = [0, 0.1267, 0.2833, 0.34, 0.4933, 0.65, 0.7833, 0.9167, 1];
 const xE = ['easeOut', 'easeIn', 'linear', 'linear', 'easeOut', 'easeIn', 'easeOut', 'easeIn', 'linear'] as const;
 const yE = ['easeOut', 'easeIn', 'linear', 'easeOut', 'easeIn', 'easeOut', 'easeIn', 'linear'] as const;
 const opE = ['linear', 'easeOut', 'linear', 'easeIn', 'linear', 'easeOut', 'linear', 'easeIn', 'linear', 'easeOut', 'linear', 'easeIn', 'linear'] as const;
-const R = { repeat: Infinity };
 
 const lines = [
   { cls: 'left-[42.85px] top-[75.25px] h-[2px] w-[12px] rounded-[1px]', op: [0, 0, 0.44, 0.3872, 0, 0, 0.44, 0.3608, 0, 0, 0.352, 0.2288, 0, 0], t: [0, 0.05, 0.08, 0.2567, 0.3067, 0.39, 0.4233, 0.65, 0.7433, 0.7567, 0.79, 0.8967, 0.9333, 1] },
