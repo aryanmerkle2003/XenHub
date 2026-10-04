@@ -1,13 +1,15 @@
 import { useRef, useState } from 'react'
 
 export default function ComparisonSlider({
-  image,
-  beforeLabel = 'Before',
-  afterLabel = 'After',
+  leftImage,
+  rightImage,
+  leftLabel,
+  rightLabel,
 }: {
-  image: string
-  beforeLabel?: string
-  afterLabel?: string
+  leftImage: string
+  rightImage: string
+  leftLabel: string
+  rightLabel: string
 }) {
   const [position, setPosition] = useState(50)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -45,23 +47,18 @@ export default function ComparisonSlider({
       className="relative h-[225px] w-full shrink-0 touch-none select-none overflow-hidden rounded-xl shadow-[0px_11px_16px_rgba(31,31,25,0.6)] md:w-[326px]"
     >
       <img
-        src={image}
-        alt={afterLabel}
+        src={rightImage}
+        alt={rightLabel}
         draggable={false}
         className="absolute inset-0 size-full object-cover"
       />
-      <div
-        className="absolute inset-0 overflow-hidden"
-        style={{ width: `${position}%` }}
-      >
-        <img
-          src={image}
-          alt={beforeLabel}
-          draggable={false}
-          className="absolute inset-0 h-full w-[326px] max-w-none object-cover"
-        />
-        <div className="absolute inset-0 bg-[#3747d2] mix-blend-overlay" />
-      </div>
+      <img
+        src={leftImage}
+        alt={leftLabel}
+        draggable={false}
+        className="absolute inset-0 size-full object-cover"
+        style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+      />
 
       <div
         className="absolute inset-y-0 flex w-9 -translate-x-1/2 items-center justify-center"
