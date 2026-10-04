@@ -79,9 +79,9 @@ export default function WaysToExperience() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="flex w-full flex-col items-center gap-8 py-8 md:flex-row md:items-center"
+          className="flex w-full flex-col items-center gap-8 py-8 md:grid md:grid-cols-[1fr_auto] md:items-center md:gap-x-8"
         >
-          <div className="flex-1">
+          <div className="md:col-start-1 md:row-start-1">
             <div className="flex flex-col gap-4 text-[15px] leading-6 text-body">
               {activeTab.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -103,28 +103,28 @@ export default function WaysToExperience() {
             </div>
           </div>
 
-          <div className="flex shrink-0 flex-col items-start gap-8">
-            {activeKey === 'lab' && (
-              <>
+          {activeKey === 'lab' && (
+            <>
+              <img
+                src={slideLab}
+                alt="XEN LAB workspace"
+                className="h-[251px] w-full rounded-xl object-cover md:col-start-2 md:row-start-1 md:h-[377px] md:w-[489px]"
+              />
+              <div className="relative aspect-[489/89] w-[245px] justify-self-end overflow-hidden md:col-start-2 md:row-start-2">
                 <img
-                  src={slideLab}
-                  alt="XEN LAB workspace"
-                  className="h-[251px] w-full rounded-xl object-cover md:h-[377px] md:w-[489px]"
+                  src={sapAppHausLogo}
+                  alt="Member of the SAP AppHaus Network"
+                  className="absolute inset-0 size-full object-cover"
                 />
-                <div className="relative h-[59px] w-full overflow-hidden md:h-[89px] md:w-[489px]">
-                  <img
-                    src={sapAppHausLogo}
-                    alt="Member of the SAP AppHaus Network"
-                    className="absolute inset-0 size-full object-cover"
-                  />
-                  <img
-                    src={sapLogo}
-                    alt=""
-                    className="absolute left-[49%] top-0 h-[33%] w-[10.5%] object-cover"
-                  />
-                </div>
-              </>
-            )}
+                <img
+                  src={sapLogo}
+                  alt=""
+                  className="absolute left-[49%] top-0 h-[33%] w-[10.5%] object-cover"
+                />
+              </div>
+            </>
+          )}
+          <div className="flex shrink-0 flex-col items-start gap-8 md:col-start-2 md:row-start-1">
             {activeKey === 'box' && (
               <ComparisonSlider
                 leftImage={emptyRoom}
