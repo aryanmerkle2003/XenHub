@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import wave1 from '../../../assets/images/decor/coffee-steam1.svg';
 import wave2 from '../../../assets/images/decor/coffee-steam2.svg';
 import wave3 from '../../../assets/images/decor/coffee-steam3.svg';

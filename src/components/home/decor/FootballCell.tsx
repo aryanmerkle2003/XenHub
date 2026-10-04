@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import vector from '../../../assets/images/decor/football-vector.svg';
 
 const BG = '#f5f0f7';
@@ -19,44 +20,51 @@ const lines = [
 ];
 
 export default function FootballCell({ className = '' }: { className?: string }) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div className={`relative h-[130px] w-[171px] shrink-0 overflow-clip rounded-lg ${className}`} style={{ backgroundColor: BG }}>
+    <motion.div
+      className={`relative h-[130px] w-[171px] shrink-0 overflow-clip rounded-lg ${className}`}
+      style={{ backgroundColor: BG }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {lines.map((l) => (
         <motion.div
           key={l.cls}
           className={`absolute ${l.cls}`}
           style={{ backgroundColor: BG }}
           initial={{ opacity: 0, x: 0, y: 0 }}
-          animate={{ opacity: l.op, x: xs, y: ys }}
+          animate={isHovered ? { opacity: l.op, x: xs, y: ys } : { opacity: 0, x: 0, y: 0 }}
           transition={{
-            opacity: { duration: D, times: l.t, ease: [...opE], ...R },
-            x: { duration: D, times: xT, ease: [...xE], ...R },
-            y: { duration: D, times: yT, ease: [...yE], ...R },
+            opacity: { duration: D, times: l.t, ease: [...opE] },
+            x: { duration: D, times: xT, ease: [...xE] },
+            y: { duration: D, times: yT, ease: [...yE] },
           }}
         />
       ))}
       <motion.div
         className="absolute inset-[22.5%_28.9%]"
         initial={{ rotate: 0, scaleX: 1, scaleY: 1, x: 0, y: 0 }}
-        animate={{
+        animate={isHovered ? {
           rotate: [0, 220, 220, 480, 650, 720, 720],
           scaleX: [1, 0.97, 1.08, 1.08, 1, 0.96, 1.08, 1, 0.99, 1, 1],
           scaleY: [1, 1.04, 0.93, 0.93, 1, 1.05, 0.93, 1, 1.02, 1, 1],
           x: xs,
           y: ys,
-        }}
+        } : { rotate: 0, scaleX: 1, scaleY: 1, x: 0, y: 0 }}
         transition={{
-          rotate: { duration: D, times: [0, 0.2833, 0.34, 0.65, 0.7833, 0.9167, 1], ease: 'linear', ...R },
-          scaleX: { duration: D, times: [0, 0.1267, 0.2833, 0.3399, 0.34, 0.4933, 0.65, 0.6933, 0.7833, 0.9167, 1], ease: ['easeOut', 'easeIn', 'linear', 'linear', 'easeOut', 'easeIn', 'easeOut', 'easeOut', 'easeIn', 'linear'], ...R },
-          scaleY: { duration: D, times: [0, 0.1267, 0.2833, 0.3399, 0.34, 0.4933, 0.65, 0.6933, 0.7833, 0.9167, 1], ease: ['easeOut', 'easeIn', 'linear', 'linear', 'easeOut', 'easeIn', 'easeOut', 'easeOut', 'easeIn', 'linear'], ...R },
-          x: { duration: D, times: xT, ease: [...xE], ...R },
-          y: { duration: D, times: yT, ease: [...yE], ...R },
+          rotate: { duration: D, times: [0, 0.2833, 0.34, 0.65, 0.7833, 0.9167, 1], ease: 'linear' },
+          scaleX: { duration: D, times: [0, 0.1267, 0.2833, 0.3399, 0.34, 0.4933, 0.65, 0.6933, 0.7833, 0.9167, 1], ease: ['easeOut', 'easeIn', 'linear', 'linear', 'easeOut', 'easeIn', 'easeOut', 'easeOut', 'easeIn', 'linear'] },
+          scaleY: { duration: D, times: [0, 0.1267, 0.2833, 0.3399, 0.34, 0.4933, 0.65, 0.6933, 0.7833, 0.9167, 1], ease: ['easeOut', 'easeIn', 'linear', 'linear', 'easeOut', 'easeIn', 'easeOut', 'easeOut', 'easeIn', 'linear'] },
+          x: { duration: D, times: xT, ease: [...xE] },
+          y: { duration: D, times: yT, ease: [...yE] },
         }}
       >
         <div className="absolute inset-[-0.35%]">
           <img alt="" className="block size-full max-w-none" src={vector} />
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
