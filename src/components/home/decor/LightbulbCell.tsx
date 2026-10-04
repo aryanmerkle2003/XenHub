@@ -1,4 +1,5 @@
 import { motion, type TargetAndTransition, type Transition } from 'framer-motion';
+import { useState } from 'react';
 import bulbBody from '../../../assets/images/decor/bulb-body.svg';
 import dash1s1 from '../../../assets/images/decor/bulb-dash1-set1.svg';
 import dash2s1 from '../../../assets/images/decor/bulb-dash2-set1.svg';
@@ -91,13 +92,13 @@ const DASHES: Dash[] = [
 ];
 
 const D = 2.2;
-const loop = { duration: D, repeat: Infinity } as const;
+const loop = { duration: D } as const;
 
-function motionFor(set: number, dx: number, dy: number): { initial: TargetAndTransition; animate: TargetAndTransition; transition: Transition } {
+function motionFor(set: number, dx: number, dy: number, isHovered: boolean): { initial: TargetAndTransition; animate: TargetAndTransition; transition: Transition } {
   if (set === 1) {
     return {
       initial: { opacity: 1, scale: 1, x: 0, y: 0 },
-      animate: { opacity: [1, 1, 0, 0], scale: [1, 1.16, 1.16], x: [0, dx, dx], y: [0, dy, dy] },
+      animate: isHovered ? { opacity: [1, 1, 0, 0], scale: [1, 1.16, 1.16], x: [0, dx, dx], y: [0, dy, dy] } : { opacity: 1, scale: 1, x: 0, y: 0 },
       transition: {
         opacity: { ...loop, times: [0, 0.2955, 0.4545, 1], ease: ['linear', 'easeIn', 'linear'] },
         scale: { ...loop, times: [0, 0.4545, 1], ease: 'linear' },
@@ -110,7 +111,7 @@ function motionFor(set: number, dx: number, dy: number): { initial: TargetAndTra
     const t = [0, 0.1273, 0.7045, 1];
     return {
       initial: { opacity: 0, scale: 1, x: 0, y: 0 },
-      animate: { opacity: [0, 0, 1, 1, 0, 0], scale: [1, 1, 1.16, 1.16], x: [0, 0, dx, dx], y: [0, 0, dy, dy] },
+      animate: isHovered ? { opacity: [0, 0, 1, 1, 0, 0], scale: [1, 1, 1.16, 1.16], x: [0, 0, dx, dx], y: [0, 0, dy, dy] } : { opacity: 0, scale: 1, x: 0, y: 0 },
       transition: {
         opacity: { ...loop, times: [0, 0.1272, 0.1273, 0.5818, 0.7045, 1], ease: ['linear', 'linear', 'linear', 'easeIn', 'linear'] },
         scale: { ...loop, times: t, ease: 'linear' },
@@ -121,7 +122,7 @@ function motionFor(set: number, dx: number, dy: number): { initial: TargetAndTra
   }
   return {
     initial: { opacity: 0, scale: 1 },
-    animate: { opacity: [0, 0, 1, 1], scale: [1, 1, 0.82, 1, 1] },
+    animate: isHovered ? { opacity: [0, 0, 1, 1], scale: [1, 1, 0.82, 1, 1] } : { opacity: 0, scale: 1 },
     transition: {
       opacity: { ...loop, times: [0, 0.2636, 0.3727, 1], ease: ['linear', 'easeOut', 'linear'] },
       scale: { ...loop, times: [0, 0.2635, 0.2636, 0.3727, 1], ease: ['linear', 'linear', 'easeOut', 'linear'] },
@@ -130,10 +131,14 @@ function motionFor(set: number, dx: number, dy: number): { initial: TargetAndTra
 }
 
 export default function LightbulbCell({ className = '' }: { className?: string }) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div
+    <motion.div
       className={`relative h-[130px] w-[171px] shrink-0 overflow-clip rounded-lg ${className}`}
       style={{ backgroundColor: '#f0f5f2' }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="absolute inset-[30.86%_37.66%_23.22%_37.66%]">
         <div className="absolute" style={{ inset: '-0.33% -0.48% -0.33% -0.47%' }}>
@@ -145,13 +150,13 @@ export default function LightbulbCell({ className = '' }: { className?: string }
           key={`${set}-${n}`}
           className="absolute"
           style={{ left, top, width: w, height: h }}
-          {...motionFor(set, dx, dy)}
+          {...motionFor(set, dx, dy, isHovered)}
         >
           <div className="absolute" style={{ inset }}>
             <img alt="" className="block size-full max-w-none" src={imgs[`${set}-${n}`]} />
           </div>
         </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }

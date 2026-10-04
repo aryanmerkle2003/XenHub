@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import unionRight from '../../../assets/images/decor/tape-union-right.svg';
 import unionLeft from '../../../assets/images/decor/tape-union-left.svg';
 import v0 from '../../../assets/images/decor/tape-v0.svg';
@@ -10,8 +11,6 @@ import v5 from '../../../assets/images/decor/tape-v5.svg';
 import v6 from '../../../assets/images/decor/tape-v6.svg';
 import v7 from '../../../assets/images/decor/tape-v7.svg';
 
-const spin = { duration: 2, ease: 'linear', repeat: Infinity } as const;
-const hold = { rotate: { ...spin, times: [0, 0.25, 1] } };
 
 const STATIC = [
   ['inset-[30%_28.65%_30.77%_28.65%]', v0],
@@ -28,10 +27,14 @@ const REELS = [
 ] as const;
 
 export default function CassetteCell({ className = '' }: { className?: string }) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div
+    <motion.div
       className={`relative h-[130px] w-[171px] shrink-0 overflow-clip rounded-lg ${className}`}
       style={{ backgroundColor: '#f0f7f7' }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {STATIC.map(([pos, src]) => (
         <div key={pos} className={`absolute ${pos}`}>
@@ -43,8 +46,8 @@ export default function CassetteCell({ className = '' }: { className?: string })
           key={pos}
           className={`absolute ${pos}`}
           initial={{ rotate: 0 }}
-          animate={{ rotate: [0, 0, 360] }}
-          transition={hold}
+          animate={isHovered ? { rotate: [0, 0, 360] } : { rotate: 0 }}
+          transition={{ rotate: { duration: 2, ease: 'linear', times: [0, 0.25, 1] } }}
         >
           <img alt="" className="absolute block size-full max-w-none" src={src} />
         </motion.div>
@@ -53,8 +56,8 @@ export default function CassetteCell({ className = '' }: { className?: string })
         className="absolute size-[13px]"
         style={{ left: 96, top: 58 }}
         initial={{ rotate: 0 }}
-        animate={{ rotate: [0, 360] }}
-        transition={{ rotate: { ...spin, times: [0, 1] } }}
+        animate={isHovered ? { rotate: [0, 360] } : { rotate: 0 }}
+        transition={{ rotate: { duration: 2, ease: 'linear', times: [0, 1] } }}
       >
         <img alt="" className="absolute block size-full max-w-none" src={unionRight} />
       </motion.div>
@@ -62,11 +65,11 @@ export default function CassetteCell({ className = '' }: { className?: string })
         className="absolute size-[13px]"
         style={{ left: 61, top: 58 }}
         initial={{ rotate: 180 }}
-        animate={{ rotate: [180, 540] }}
-        transition={{ rotate: { ...spin, times: [0, 1] } }}
+        animate={isHovered ? { rotate: [180, 540] } : { rotate: 180 }}
+        transition={{ rotate: { duration: 2, ease: 'linear', times: [0, 1] } }}
       >
         <img alt="" className="absolute block size-full max-w-none -scale-x-100" src={unionLeft} />
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
