@@ -28,7 +28,7 @@ export default function XenFaqs() {
 
           <FaqAccordion />
 
-          <ConnectBanner />
+          <ConnectBanner flush />
         </div>
 
         <OnThisPage sections={sections} />

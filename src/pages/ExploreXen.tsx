@@ -53,7 +53,7 @@ export default function ExploreXen() {
             <WaysToExperience />
           </Reveal>
 
-          <ConnectBanner />
+          <ConnectBanner flush />
         </div>
 
         <OnThisPage sections={sections} />

@@ -71,7 +71,7 @@ export default function WorkshopOverview() {
             <WorkshopMasterDetail />
           </Reveal>
 
-          <ConnectBanner />
+          <ConnectBanner flush />
         </div>
 
         <OnThisPage sections={sections} />

@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 import Reveal from './Reveal'
 
-export default function ConnectBanner() {
+export default function ConnectBanner({ flush = false }: { flush?: boolean }) {
   return (
-    <section id="contact" className="w-full px-6 py-8 md:px-[76px] md:py-[30px]">
+    <section id="contact" className={`w-full ${flush ? '' : 'px-6 py-8 md:px-[76px] md:py-[30px]'}`}>
       <Reveal>
         <div
           className="flex w-full flex-col items-start justify-between gap-4 rounded-2xl p-6 sm:flex-row sm:items-center md:p-[30px]"

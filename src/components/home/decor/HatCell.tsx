@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import frameLeft from '../../../assets/images/decor/hat-frame-left.svg';
 import v0 from '../../../assets/images/decor/hat-v0.svg';
 import v1 from '../../../assets/images/decor/hat-v1.svg';
@@ -8,30 +9,33 @@ import brim from '../../../assets/images/decor/hat-brim.svg';
 import outline from '../../../assets/images/decor/hat-outline.svg';
 
 const BG = '#f2edf5';
-const loop = { duration: 3, repeat: Infinity } as const;
 const pop = [0.45, 1.45, 0.8, 1] as const;
 
 const fill = 'absolute block size-full max-w-none';
 
 export default function HatCell({ className = '' }: { className?: string }) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div
+    <motion.div
       className={`relative h-[130px] w-[171px] shrink-0 overflow-clip rounded-lg ${className}`}
       style={{ backgroundColor: BG }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div
         className="absolute size-[33px]"
         style={{ left: 64.5, top: 53 }}
         initial={{ rotate: -22, x: 0, y: 0 }}
-        animate={{
+        animate={isHovered ? {
           rotate: [-22, -22, -17, -24, -22, -22, -25, -22, -22],
           x: [0, 0, -16, -14, -14, 0, 0],
           y: [0, 0, -42, -38, -38, 0, 0],
-        }}
+        } : { rotate: -22, x: 0, y: 0 }}
         transition={{
-          rotate: { ...loop, times: [0, 0.0833, 0.2833, 0.35, 0.4167, 0.5833, 0.8167, 0.8833, 1], ease: ['linear', 'easeOut', 'easeInOut', 'easeInOut', 'linear', 'easeIn', 'easeOut', 'linear'] },
-          x: { ...loop, times: [0, 0.0833, 0.3, 0.3733, 0.6067, 0.85, 1], ease: ['linear', pop, 'easeOut', 'linear', 'easeIn', 'linear'] },
-          y: { ...loop, times: [0, 0.0833, 0.3, 0.3733, 0.6067, 0.85, 1], ease: ['linear', pop, 'easeOut', 'linear', 'easeIn', 'linear'] },
+          rotate: { duration: 3, times: [0, 0.0833, 0.2833, 0.35, 0.4167, 0.5833, 0.8167, 0.8833, 1], ease: ['linear', 'easeOut', 'easeInOut', 'easeInOut', 'linear', 'easeIn', 'easeOut', 'linear'] },
+          x: { duration: 3, times: [0, 0.0833, 0.3, 0.3733, 0.6067, 0.85, 1], ease: ['linear', pop, 'easeOut', 'linear', 'easeIn', 'linear'] },
+          y: { duration: 3, times: [0, 0.0833, 0.3, 0.3733, 0.6067, 0.85, 1], ease: ['linear', pop, 'easeOut', 'linear', 'easeIn', 'linear'] },
         }}
       >
         <img alt="" className={fill} src={frameLeft} />
@@ -40,15 +44,15 @@ export default function HatCell({ className = '' }: { className?: string }) {
         className="absolute size-[33px] overflow-clip"
         style={{ left: 71.5, top: 45.1 }}
         initial={{ rotate: 22, x: 0, y: 0 }}
-        animate={{
+        animate={isHovered ? {
           rotate: [22, 22, 17, 24, 22, 22, 25, 22, 22],
           x: [0, 0, 20, 18, 18, 0, 0],
           y: [0, 0, -34, -30, -30, 0, 0],
-        }}
+        } : { rotate: 22, x: 0, y: 0 }}
         transition={{
-          rotate: { ...loop, times: [0, 0.1333, 0.3333, 0.4, 0.4667, 0.6333, 0.8667, 0.9333, 1], ease: ['linear', 'easeOut', 'easeInOut', 'easeInOut', 'linear', 'easeIn', 'easeOut', 'linear'] },
-          x: { ...loop, times: [0, 0.1333, 0.35, 0.4267, 0.66, 0.9, 1], ease: ['linear', pop, 'easeOut', 'linear', 'easeIn', 'linear'] },
-          y: { ...loop, times: [0, 0.1333, 0.35, 0.4267, 0.66, 0.9, 1], ease: ['linear', pop, 'easeOut', 'linear', 'easeIn', 'linear'] },
+          rotate: { duration: 3, times: [0, 0.1333, 0.3333, 0.4, 0.4667, 0.6333, 0.8667, 0.9333, 1], ease: ['linear', 'easeOut', 'easeInOut', 'easeInOut', 'linear', 'easeIn', 'easeOut', 'linear'] },
+          x: { duration: 3, times: [0, 0.1333, 0.35, 0.4267, 0.66, 0.9, 1], ease: ['linear', pop, 'easeOut', 'linear', 'easeIn', 'linear'] },
+          y: { duration: 3, times: [0, 0.1333, 0.35, 0.4267, 0.66, 0.9, 1], ease: ['linear', pop, 'easeOut', 'linear', 'easeIn', 'linear'] },
         }}
       >
         <div className="absolute inset-[11.74%_12.5%_12.5%_12.46%]">
@@ -74,6 +78,6 @@ export default function HatCell({ className = '' }: { className?: string }) {
       <div className="absolute inset-x-1/4 inset-y-[28.76%]">
         <img alt="" className={fill} src={outline} />
       </div>
-    </div>
+    </motion.div>
   );
 }

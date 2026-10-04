@@ -5,7 +5,7 @@ import xenHubLogoWhite from '../../assets/images/xen-hub-logo-white.png'
 
 export default function Hero() {
   return (
-    <section className="relative flex h-[420px] w-full items-center overflow-clip px-6 py-12 md:h-[560px] md:px-[76px] md:py-16 lg:h-[640px]">
+    <section className="relative flex min-h-screen w-full items-center overflow-clip px-6 py-12 md:px-[76px] md:py-16">
       <div aria-hidden className="absolute inset-0">
         <img
           src={heroImg}

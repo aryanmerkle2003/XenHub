@@ -107,7 +107,7 @@ export default function DifferentiatorsTabs() {
 
   return (
     <div className="flex w-full flex-col items-start">
-      <div className="flex w-full items-start gap-[5px] overflow-x-auto border-b border-[#e5e7eb]">
+      <div className="flex w-full items-start overflow-x-auto border-b border-[#e5e7eb]">
         {differentiatorTabs.map((tab) => {
           const active = tab.key === activeKey
           return (
@@ -144,7 +144,7 @@ export default function DifferentiatorsTabs() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="w-full py-8"
+          className="w-full gap-8 py-8"
         >
           {activeTab.layout === 'quad' ? (
             <div className="grid w-full grid-cols-1 gap-x-[30px] gap-y-6 md:grid-cols-2">

@@ -81,7 +81,7 @@ export default function BookMasterDetail() {
               <div className="flex flex-col gap-2">
                 <p className="text-xs font-bold uppercase text-[#6b7280]">Case Study</p>
                 <p className="text-2xl font-bold text-[#05051e]">{activeBook.title}</p>
-                <p className="line-clamp-2 min-h-10 text-[14px] leading-5 text-[#6b7280]">
+                <p className="min-h-10 text-[14px] leading-5 text-[#6b7280]">
                   {activeBook.description}
                 </p>
               </div>
