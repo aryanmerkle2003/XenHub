@@ -7,7 +7,7 @@ export default function XenTools() {
   return (
     <section className="flex w-full flex-col px-6 py-14 md:px-[76px] md:py-[56px]">
       <div className="flex flex-col-reverse items-center gap-8 md:flex-row md:gap-12">
-        <Reveal className="h-[220px] w-full shrink-0 overflow-hidden rounded-xl bg-surface md:h-[414px] md:w-[560px]">
+        <Reveal className="h-[220px] w-full shrink-0 overflow-hidden rounded-xl bg-surface md:h-[333px] md:w-[450px]">
           <img src={xenConcept} alt="" className="size-full object-cover" />
         </Reveal>
 

@@ -38,7 +38,7 @@ export default function WhatIsXen() {
           <img
             src={xenConcept}
             alt="Participants collaborating in a XEN workshop"
-            className="h-[220px] w-full rounded-xl object-cover md:h-[355px] md:w-[480px]"
+            className="h-[220px] w-full rounded-xl object-cover md:h-[333px] md:w-[450px]"
           />
         </Reveal>
       </div>

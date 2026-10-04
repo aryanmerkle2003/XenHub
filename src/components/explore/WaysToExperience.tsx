@@ -36,19 +36,13 @@ const tabs = [
   },
 ] as const
 
-const tabWidths: Record<string, string> = {
-  lab: 'w-[92px]',
-  box: 'w-[125px]',
-  unwired: 'w-[120px]',
-}
-
 export default function WaysToExperience() {
   const [activeKey, setActiveKey] = useState<(typeof tabs)[number]['key']>('lab')
   const activeTab = tabs.find((tab) => tab.key === activeKey) ?? tabs[0]
 
   return (
     <div className="flex w-full flex-col items-start">
-      <div className="flex w-full items-start border-b border-[#e5e7eb]">
+      <div className="flex w-full items-start overflow-x-auto border-b border-[#e5e7eb]">
         {tabs.map((tab) => {
           const active = tab.key === activeKey
           return (
@@ -57,10 +51,10 @@ export default function WaysToExperience() {
               type="button"
               onClick={() => setActiveKey(tab.key)}
               aria-selected={active}
-              className={`group flex flex-col items-center gap-2 pt-3 ${tabWidths[tab.key]}`}
+              className="group flex shrink-0 flex-col items-center gap-2 px-5 pt-3"
             >
               <span
-                className={`text-sm transition-colors ${
+                className={`whitespace-nowrap text-sm transition-colors ${
                   active
                     ? 'font-semibold text-brand-dark'
                     : 'font-medium text-[#6b7280] group-hover:text-[#111827]'
@@ -115,9 +109,9 @@ export default function WaysToExperience() {
                 <img
                   src={slideLab}
                   alt="XEN LAB workspace"
-                  className="h-[251px] w-full rounded-xl object-cover md:w-[326px]"
+                  className="h-[251px] w-full rounded-xl object-cover md:h-[377px] md:w-[489px]"
                 />
-                <div className="relative h-[59px] w-full overflow-hidden md:w-[326px]">
+                <div className="relative h-[59px] w-full overflow-hidden md:h-[89px] md:w-[489px]">
                   <img
                     src={sapAppHausLogo}
                     alt="Member of the SAP AppHaus Network"
@@ -143,7 +137,7 @@ export default function WaysToExperience() {
               <img
                 src={unwiredPlaceholder}
                 alt="A XEN Unwired virtual session"
-                className="h-[200px] w-full rounded-xl object-cover md:w-[326px]"
+                className="h-[200px] w-full rounded-xl object-cover md:h-[300px] md:w-[489px]"
               />
             )}
           </div>

@@ -7,19 +7,19 @@ import Reveal from '../Reveal'
 const cards = [
   {
     icon: iconLearn,
-    background: '#1f1a8c',
+    background: 'linear-gradient(150.94deg, #1e1eb5 20%, #2640e5 80%)',
     title: 'Learn',
     description: 'Understand Merkle XEN, its offerings, and how it can help you',
   },
   {
     icon: iconPitch,
-    background: '#8c2680',
+    background: 'linear-gradient(114.28deg, #8c2680 0%, #b84073 100%)',
     title: 'Pitch',
     description: "Showcase Merkle XEN's capabilities and success stories",
   },
   {
     icon: iconActivate,
-    background: '#5926bf',
+    background: 'linear-gradient(29.06deg, #5926bf 14.286%, #8c40d9 85.714%)',
     title: 'Activate',
     description: 'Equip yourself to think like a Merkle XEN Practitioner',
   },
@@ -40,12 +40,12 @@ export default function UsageSection() {
             <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.2 }}
-              className="flex h-full flex-col justify-center gap-7 overflow-clip rounded-[20px] py-[22px] pl-7 pr-[34px] shadow-[0px_16px_30px_0px_rgba(0,0,0,0.14)]"
-              style={{ backgroundColor: card.background }}
+              className="flex h-full min-h-[208px] flex-col justify-between gap-7 overflow-clip rounded-xl p-[25px]"
+              style={{ backgroundImage: card.background }}
             >
               <div className="flex flex-col gap-3">
                 <img src={card.icon} alt="" className="size-[42px]" />
-                <p className="text-[28px] tracking-[-0.84px] text-white">
+                <p className="text-[28px] font-semibold tracking-[-0.84px] text-white">
                   {card.title}
                 </p>
               </div>
