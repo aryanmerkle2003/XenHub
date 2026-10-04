@@ -31,7 +31,7 @@ export default function XenBooksLibrary() {
 
           <BookMasterDetail />
 
-          <ConnectBanner />
+          <ConnectBanner flush />
         </div>
 
         <OnThisPage sections={sections} />

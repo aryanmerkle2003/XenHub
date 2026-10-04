@@ -85,7 +85,7 @@ export default function PresentationDecks() {
             ))}
           </Reveal>
 
-          <ConnectBanner />
+          <ConnectBanner flush />
         </div>
 
         <OnThisPage sections={sections} />
