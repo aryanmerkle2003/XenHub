@@ -3,7 +3,6 @@ import { useState } from 'react';
 import left from '../../../assets/images/decor/slippers-left.svg';
 import right from '../../../assets/images/decor/slippers-right.svg';
 
-const T = { duration: 3, repeat: Infinity };
 const t1 = [0, 0.0667, 0.14, 0.2167, 0.29, 0.3667, 0.44, 0.5167, 0.59, 0.6667, 0.74, 0.8167, 0.9067, 1];
 const e1 = ['linear', 'easeOut', 'easeInOut', 'easeOut', 'easeInOut', 'easeOut', 'easeInOut', 'easeOut', 'easeInOut', 'easeOut', 'easeInOut', 'easeOut', 'easeOut'] as const;
 const t2 = [0, 0.0667, 0.2167, 0.29, 0.3667, 0.44, 0.5167, 0.59, 0.6667, 0.74, 0.8167, 0.9067, 1];

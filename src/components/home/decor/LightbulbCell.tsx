@@ -92,7 +92,6 @@ const DASHES: Dash[] = [
 ];
 
 const D = 2.2;
-const loop = { duration: D } as const;
 
 function motionFor(set: number, dx: number, dy: number, isHovered: boolean): { initial: TargetAndTransition; animate: TargetAndTransition; transition: Transition } {
   if (set === 1) {
@@ -100,10 +99,10 @@ function motionFor(set: number, dx: number, dy: number, isHovered: boolean): { i
       initial: { opacity: 1, scale: 1, x: 0, y: 0 },
       animate: isHovered ? { opacity: [1, 1, 0, 0], scale: [1, 1.16, 1.16], x: [0, dx, dx], y: [0, dy, dy] } : { opacity: 1, scale: 1, x: 0, y: 0 },
       transition: {
-        opacity: { ...loop, times: [0, 0.2955, 0.4545, 1], ease: ['linear', 'easeIn', 'linear'] },
-        scale: { ...loop, times: [0, 0.4545, 1], ease: 'linear' },
-        x: { ...loop, times: [0, 0.4545, 1], ease: 'linear' },
-        y: { ...loop, times: [0, 0.4545, 1], ease: 'linear' },
+        opacity: { duration: D, times: [0, 0.2955, 0.4545, 1], ease: ['linear', 'easeIn', 'linear'] },
+        scale: { duration: D, times: [0, 0.4545, 1], ease: 'linear' },
+        x: { duration: D, times: [0, 0.4545, 1], ease: 'linear' },
+        y: { duration: D, times: [0, 0.4545, 1], ease: 'linear' },
       },
     };
   }
@@ -113,10 +112,10 @@ function motionFor(set: number, dx: number, dy: number, isHovered: boolean): { i
       initial: { opacity: 0, scale: 1, x: 0, y: 0 },
       animate: isHovered ? { opacity: [0, 0, 1, 1, 0, 0], scale: [1, 1, 1.16, 1.16], x: [0, 0, dx, dx], y: [0, 0, dy, dy] } : { opacity: 0, scale: 1, x: 0, y: 0 },
       transition: {
-        opacity: { ...loop, times: [0, 0.1272, 0.1273, 0.5818, 0.7045, 1], ease: ['linear', 'linear', 'linear', 'easeIn', 'linear'] },
-        scale: { ...loop, times: t, ease: 'linear' },
-        x: { ...loop, times: t, ease: 'linear' },
-        y: { ...loop, times: t, ease: 'linear' },
+        opacity: { duration: D, times: [0, 0.1272, 0.1273, 0.5818, 0.7045, 1], ease: ['linear', 'linear', 'linear', 'easeIn', 'linear'] },
+        scale: { duration: D, times: t, ease: 'linear' },
+        x: { duration: D, times: t, ease: 'linear' },
+        y: { duration: D, times: t, ease: 'linear' },
       },
     };
   }
@@ -124,8 +123,8 @@ function motionFor(set: number, dx: number, dy: number, isHovered: boolean): { i
     initial: { opacity: 0, scale: 1 },
     animate: isHovered ? { opacity: [0, 0, 1, 1], scale: [1, 1, 0.82, 1, 1] } : { opacity: 0, scale: 1 },
     transition: {
-      opacity: { ...loop, times: [0, 0.2636, 0.3727, 1], ease: ['linear', 'easeOut', 'linear'] },
-      scale: { ...loop, times: [0, 0.2635, 0.2636, 0.3727, 1], ease: ['linear', 'linear', 'easeOut', 'linear'] },
+      opacity: { duration: D, times: [0, 0.2636, 0.3727, 1], ease: ['linear', 'easeOut', 'linear'] },
+      scale: { duration: D, times: [0, 0.2635, 0.2636, 0.3727, 1], ease: ['linear', 'linear', 'easeOut', 'linear'] },
     },
   };
 }
