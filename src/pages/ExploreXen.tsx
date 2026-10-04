@@ -6,14 +6,19 @@ import OnThisPage from '../components/nav/OnThisPage'
 import PageLayout from '../layouts/PageLayout'
 import slide1 from '../assets/images/slide-1.jpg'
 import slide2 from '../assets/images/slide-2.png'
-import slide3 from '../assets/images/slide-3.jpg'
+import carousel1 from '../assets/images/explore-carousel-1.jpg'
+import carousel2 from '../assets/images/explore-carousel-2.jpg'
+import carousel3 from '../assets/images/explore-carousel-3.jpg'
+import carousel4 from '../assets/images/explore-carousel-4.jpg'
+import carousel5 from '../assets/images/explore-carousel-5.jpg'
+import carousel6 from '../assets/images/explore-carousel-6.jpg'
 
 const sections = [
   { id: 'what-is-xen', label: 'What is XEN' },
   { id: 'ways-to-experience', label: 'Ways to Experience XEN' },
 ]
 
-const carouselImages = [slide1, slide2, slide3, slide1, slide2]
+const carouselImages = [slide1, slide2, carousel1, carousel2, carousel3, carousel4, carousel5, carousel6]
 
 export default function ExploreXen() {
   return (

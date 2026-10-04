@@ -6,7 +6,7 @@ export default function ImageCarousel({ images }: { images: string[] }) {
   const trackRef = useRef<HTMLDivElement>(null)
 
   const scrollByCard = (direction: 1 | -1) => {
-    trackRef.current?.scrollBy({ left: direction * 240, behavior: 'smooth' })
+    trackRef.current?.scrollBy({ left: direction * 350, behavior: 'smooth' })
   }
 
   return (
@@ -20,7 +20,7 @@ export default function ImageCarousel({ images }: { images: string[] }) {
             key={i}
             src={src}
             alt=""
-            className="h-[160px] w-[220px] shrink-0 rounded-[10px] object-cover"
+            className="h-[240px] w-[330px] shrink-0 rounded-[10px] object-cover"
           />
         ))}
       </div>

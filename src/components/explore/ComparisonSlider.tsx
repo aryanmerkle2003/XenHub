@@ -44,7 +44,7 @@ export default function ComparisonSlider({
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
-      className="relative h-[225px] w-full shrink-0 touch-none select-none overflow-hidden rounded-xl shadow-[0px_11px_16px_rgba(31,31,25,0.6)] md:w-[326px]"
+      className="relative h-[225px] md:h-[338px] w-full shrink-0 touch-none select-none overflow-hidden rounded-xl shadow-[0px_11px_16px_rgba(31,31,25,0.6)] md:w-[489px]"
     >
       <img
         src={rightImage}
