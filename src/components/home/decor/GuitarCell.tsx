@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import note1 from '../../../assets/images/decor/guitar-note1.svg';
 import note2 from '../../../assets/images/decor/guitar-note2.svg';
 import note3 from '../../../assets/images/decor/guitar-note3.svg';
@@ -19,30 +20,36 @@ const NOTES = [
 ] as const;
 
 export default function GuitarCell({ className = '' }: { className?: string }) {
+  const [isHovered, setIsHovered] = useState(false);
   const imgs = [note1, note2, note3, note4, note5, note6];
   return (
-    <div className={`relative h-[130px] w-[171px] shrink-0 overflow-clip rounded-lg ${className}`} style={{ backgroundColor: '#edf2fa' }}>
-      <div className="absolute inset-[15.63%_23.87%_15.62%_23.87%]">
+    <motion.div
+      className={`relative h-[130px] w-[171px] shrink-0 overflow-clip rounded-lg ${className}`}
+      style={{ backgroundColor: '#edf2fa' }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <motion.div className="absolute inset-[15.63%_23.87%_15.62%_23.87%]">
         <img alt="" className="absolute inset-0 block size-full max-w-none" src={body} />
-      </div>
+      </motion.div>
       {NOTES.map((n, i) => (
         <motion.div
           key={n.n}
           className="absolute size-[15px]"
           style={{ left: n.left, top: n.top }}
           initial={{ opacity: 0, rotate: n.r0, scale: 1, x: 0, y: 0 }}
-          animate={{ opacity: [...n.ov], rotate: [...n.rot], scale: n.tt.length === 4 ? [1, 1.14, 0.72, 0.72] : [1, 1, 1.14, 0.72, 0.72], x: [...n.x], y: [...n.y] }}
+          animate={isHovered ? { opacity: [...n.ov], rotate: [...n.rot], scale: n.tt.length === 4 ? [1, 1.14, 0.72, 0.72] : [1, 1, 1.14, 0.72, 0.72], x: [...n.x], y: [...n.y] } : { opacity: 0, rotate: n.r0, scale: 1, x: 0, y: 0 }}
           transition={{
-            opacity: { duration: D, times: [...n.ot], ease: [...n.oe], repeat: Infinity },
-            rotate: { duration: D, times: [...n.tt], ease: [...n.re], repeat: Infinity },
-            scale: { duration: D, times: [...n.tt], ease: [...n.xe], repeat: Infinity },
-            x: { duration: D, times: [...n.tt], ease: [...n.xe], repeat: Infinity },
-            y: { duration: D, times: [...n.tt], ease: [...n.xe], repeat: Infinity },
+            opacity: { duration: D, times: [...n.ot], ease: [...n.oe] },
+            rotate: { duration: D, times: [...n.tt], ease: [...n.re] },
+            scale: { duration: D, times: [...n.tt], ease: [...n.xe] },
+            x: { duration: D, times: [...n.tt], ease: [...n.xe] },
+            y: { duration: D, times: [...n.tt], ease: [...n.xe] },
           }}
         >
           <img alt="" className="absolute inset-0 block size-full max-w-none" src={imgs[i]} />
         </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }

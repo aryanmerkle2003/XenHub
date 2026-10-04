@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import ConnectWithUs from './pages/ConnectWithUs'
 import ExploreXen from './pages/ExploreXen'
 import Home from './pages/Home'
@@ -8,18 +9,31 @@ import XenBooksLibrary from './pages/XenBooksLibrary'
 import XenFaqs from './pages/XenFaqs'
 import XenTools from './pages/XenTools'
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
+
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/explore-xen" element={<ExploreXen />} />
-      <Route path="/workshop-overview" element={<WorkshopOverview />} />
-      <Route path="/presentation-decks" element={<PresentationDecks />} />
-      <Route path="/xenbooks-library" element={<XenBooksLibrary />} />
-      <Route path="/xen-faqs" element={<XenFaqs />} />
-      <Route path="/connect-with-us" element={<ConnectWithUs />} />
-      <Route path="/xen-tools" element={<XenTools />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/explore-xen" element={<ExploreXen />} />
+        <Route path="/workshop-overview" element={<WorkshopOverview />} />
+        <Route path="/presentation-decks" element={<PresentationDecks />} />
+        <Route path="/xenbooks-library" element={<XenBooksLibrary />} />
+        <Route path="/xen-faqs" element={<XenFaqs />} />
+        <Route path="/connect-with-us" element={<ConnectWithUs />} />
+        <Route path="/xen-tools" element={<XenTools />} />
+      </Routes>
+    </>
   )
 }
 

@@ -89,7 +89,9 @@ export default function XenTools() {
               recommends the tools that best fit your need.
             </p>
             <a
-              href="#"
+              href="https://xen-tool-recommender.onrender.com/"
+              target="_blank"
+              rel="noreferrer"
               className="text-sm font-semibold text-[#1e1eb5] underline"
             >
               Experience the Recommender Now →
