@@ -1,5 +1,6 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import CommunicationTemplates from './pages/CommunicationTemplates'
 import ConnectWithUs from './pages/ConnectWithUs'
 import ExploreXen from './pages/ExploreXen'
 import Home from './pages/Home'
@@ -31,6 +32,7 @@ function App() {
         <Route path="/xenbooks-library" element={<XenBooksLibrary />} />
         <Route path="/xen-faqs" element={<XenFaqs />} />
         <Route path="/connect-with-us" element={<ConnectWithUs />} />
+        <Route path="/communication-templates" element={<CommunicationTemplates />} />
         <Route path="/xen-tools" element={<XenTools />} />
       </Routes>
     </>
