@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import PresentationDecks from './pages/PresentationDecks'
 import WorkshopOverview from './pages/WorkshopOverview'
 import XenBooksLibrary from './pages/XenBooksLibrary'
+import XenMedia from './pages/XenMedia'
 import XenFaqs from './pages/XenFaqs'
 import XenTools from './pages/XenTools'
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/xen-faqs" element={<XenFaqs />} />
         <Route path="/connect-with-us" element={<ConnectWithUs />} />
         <Route path="/communication-templates" element={<CommunicationTemplates />} />
+        <Route path="/xen-media" element={<XenMedia />} />
         <Route path="/xen-tools" element={<XenTools />} />
       </Routes>
     </>
