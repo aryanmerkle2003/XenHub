@@ -15,7 +15,7 @@ export default function PresentationDecks() {
   return (
     <PageLayout>
       <div className="flex w-full items-start gap-8 px-12 pb-20 pt-14">
-        <div id="presentation-decks" className="flex min-w-0 flex-1 flex-col gap-8">
+        <div id="presentation-decks" className="flex min-w-0 flex-1 flex-col gap-9">
           <p className="flex items-center gap-1.5 text-xs text-[#6b7280]">
             <span>Learn</span>
             <span>›</span>

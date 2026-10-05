@@ -33,6 +33,8 @@ export default function XenTools() {
             </p>
           </div>
 
+          <div className="mb-2 mt-9 h-px w-full bg-hairline" />
+
           <Reveal
             id="five-focus-areas"
             className="flex w-full flex-col gap-5 pt-7"
