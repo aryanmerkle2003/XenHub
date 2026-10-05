@@ -91,9 +91,9 @@ export default function TemplateGallery() {
 
   return (
     <div id="template-gallery" className="flex w-full flex-col gap-5">
-      <div className="flex flex-col gap-1.5 text-[#6b7280]">
-        <p className="text-[13px] font-semibold uppercase tracking-[1.5px]">Template Gallery</p>
-        <p className="text-sm leading-[22px]">
+      <div className="flex flex-col gap-5">
+        <h2 className="text-[22px] font-semibold text-[#05051e]">Template Gallery</h2>
+        <p className="text-sm leading-[22px] text-[#6b7280]">
           Browse the full communication set grouped by phase and ready to use in Figma.
           {phase === 'pre' && ' The Figma file'}
           {phase === 'post' && ' It'} includes detailed "How to" guides for each template -
