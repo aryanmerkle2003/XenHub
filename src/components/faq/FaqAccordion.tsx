@@ -27,7 +27,13 @@ function FaqRow({
         aria-expanded={isOpen}
         className="flex w-full items-center justify-between gap-4 text-left"
       >
-        <p className="text-[15px] font-semibold leading-[1.4] text-[#111827]">{question}</p>
+        <p
+          className={`text-[15px] font-semibold leading-[1.4] transition-colors ${
+            isOpen ? 'text-brand-dark' : 'text-[#111827]'
+          }`}
+        >
+          {question}
+        </p>
         <img
           src={isOpen ? iconChevronFaqOpen : iconChevronFaqClosed}
           alt=""
@@ -72,9 +78,7 @@ export default function FaqAccordion() {
     <div className="flex w-full flex-col gap-10">
       {faqSections.map((section) => (
         <div key={section.id} id={section.id} className="flex w-full flex-col gap-4">
-          <p className="text-base font-semibold uppercase tracking-[0.5px] text-brand-dark">
-            {section.topic}
-          </p>
+          <h2 className="text-[22px] font-semibold text-[#05051e]">{section.topic}</h2>
           <div className="flex w-full flex-col gap-2.5">
             {section.faqs.map((faq) => (
               <FaqRow

@@ -13,7 +13,7 @@ export default function XenBooksLibrary() {
   return (
     <PageLayout>
       <div className="flex w-full items-start gap-8 px-12 pb-20 pt-14">
-        <div id="xenbook-viewer" className="flex min-w-0 flex-1 flex-col gap-10">
+        <div id="xenbook-viewer" className="flex min-w-0 flex-1 flex-col gap-9">
           <div className="flex flex-col gap-4">
             <h1 className="text-[36px] font-semibold leading-[1.15] text-[#111827]">
               XENBooks

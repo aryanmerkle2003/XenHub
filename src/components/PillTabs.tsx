@@ -20,7 +20,9 @@ export default function PillTabs({
             onClick={() => onChange(tab.key)}
             aria-pressed={active}
             className={`rounded-[20px] px-4 py-2 text-[13px] font-semibold transition-colors ${
-              active ? 'bg-[#0328d1] text-white' : 'text-[#0328d1]'
+              active
+                ? 'border border-transparent bg-[#0328d1] text-white'
+                : 'border border-[#e5e7eb] bg-[#f3f4f6] text-[#0328d1]'
             }`}
           >
             {tab.label}

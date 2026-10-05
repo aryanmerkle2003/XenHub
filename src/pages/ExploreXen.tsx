@@ -44,7 +44,9 @@ export default function ExploreXen() {
             </p>
           </div>
 
-          <div className="pt-7">
+          <div className="my-2 h-px w-full bg-hairline" />
+
+          <div>
             <ImageCarousel images={carouselImages} />
           </div>
 
