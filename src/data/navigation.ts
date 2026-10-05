@@ -23,7 +23,7 @@ export const navSections: NavSection[] = [
       { label: 'Presentation Decks', to: '/presentation-decks' },
       { label: 'Case Studies', comingSoon: true },
       { label: 'XENBooks Library', to: '/xenbooks-library' },
-      { label: 'XEN Media', comingSoon: true },
+      { label: 'XEN Media', to: '/xen-media' },
       { label: 'XEN FAQs', to: '/xen-faqs' },
     ],
   },
