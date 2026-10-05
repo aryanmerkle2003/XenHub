@@ -43,15 +43,17 @@ export default function WorkshopOverview() {
           <Divider />
 
           <Reveal id="workshops-different" className="flex w-full flex-col gap-7">
-            <h2 className="text-[22px] font-semibold text-[#111827]">
-              How are XEN Workshops different?
-            </h2>
-            <p className="max-w-[860px] text-[15px] leading-[1.65] text-[#6b7280]">
-              Most workshops run on slides and sticky notes; ours run on
-              snacks, Lego, and AI avatars. To ensure that the XEN
-              experience is lived, here are some principles of how we do
-              it:
-            </p>
+            <div className="flex flex-col gap-5">
+              <h2 className="text-[22px] font-semibold text-[#111827]">
+                How are XEN Workshops different?
+              </h2>
+              <p className="max-w-[860px] text-[15px] leading-[1.65] text-[#6b7280]">
+                Most workshops run on slides and sticky notes; ours run on
+                snacks, Lego, and AI avatars. To ensure that the XEN
+                experience is lived, here are some principles of how we do
+                it:
+              </p>
+            </div>
             <DifferentiatorsTabs />
           </Reveal>
 

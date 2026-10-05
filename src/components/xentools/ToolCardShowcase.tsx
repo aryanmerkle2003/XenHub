@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import { dotMatrixOpacities, toolCards } from '../../data/xenTools'
 
 function DotMatrix() {
@@ -16,6 +17,8 @@ function DotMatrix() {
 }
 
 export default function ToolCardShowcase() {
+  const [hoveredId, setHoveredId] = useState<string | null>(null)
+
   return (
     <div
       className="relative mx-auto w-full max-w-[453px]"
@@ -29,12 +32,15 @@ export default function ToolCardShowcase() {
             left: `${card.centerX}%`,
             top: `${card.centerY}%`,
             transform: 'translate(-50%, -50%)',
+            zIndex: hoveredId === card.id ? 30 : 1,
           }}
+          onPointerEnter={() => setHoveredId(card.id)}
+          onPointerLeave={() => setHoveredId(null)}
         >
           <motion.div
             className="flex h-[190px] w-[136px] flex-col overflow-hidden rounded-2xl p-3 shadow-[0px_14px_47px_0px_rgba(0,0,0,0.44)]"
             style={{ backgroundColor: card.color, rotate: card.rotate }}
-            whileHover={{ scale: 1.08, zIndex: 20 }}
+            whileHover={{ scale: 1.08 }}
             transition={{ duration: 0.2 }}
           >
             <div className="pointer-events-none absolute -top-6 right-0 size-[84px] rounded-full bg-white/[0.08]" />

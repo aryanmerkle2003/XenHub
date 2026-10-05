@@ -3,7 +3,6 @@ import Reveal from '../components/Reveal'
 import OnThisPage from '../components/nav/OnThisPage'
 import PageLayout from '../layouts/PageLayout'
 import downloadIcon from '../assets/images/download-icon.svg'
-import iconSearch from '../assets/images/icon-search.svg'
 import { presentationDecks } from '../data/presentationDecks'
 
 const sections = [{ id: 'presentation-decks', label: 'Presentation Decks' }]
@@ -37,11 +36,6 @@ export default function PresentationDecks() {
           </div>
 
           <Divider />
-
-          <div className="flex w-full items-center rounded-lg border border-[#e5e5e5] bg-white px-3.5 py-2.5">
-            <img src={iconSearch} alt="" className="mr-2 size-3" />
-            <span className="text-sm text-[#999]">Search Decks...</span>
-          </div>
 
           <Reveal className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2">
             {presentationDecks.map((deck) => (

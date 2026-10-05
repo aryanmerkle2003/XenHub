@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
+import PillTabs from '../PillTabs'
 import {
   differentiatorTabs,
   type DifferentiatorGroup,
@@ -107,35 +108,7 @@ export default function DifferentiatorsTabs() {
 
   return (
     <div className="flex w-full flex-col items-start">
-      <div className="flex w-full items-start overflow-x-auto border-b border-[#e5e7eb]">
-        {differentiatorTabs.map((tab) => {
-          const active = tab.key === activeKey
-          return (
-            <button
-              key={tab.key}
-              type="button"
-              onClick={() => setActiveKey(tab.key)}
-              aria-selected={active}
-              className="group flex shrink-0 flex-col items-center gap-2 px-5 pt-3"
-            >
-              <span
-                className={`whitespace-nowrap text-sm transition-colors ${
-                  active
-                    ? 'font-semibold text-brand-dark'
-                    : 'font-medium text-[#6b7280] group-hover:text-[#111827]'
-                }`}
-              >
-                {tab.label}
-              </span>
-              <span
-                className={`h-0.5 w-full rounded-sm transition-colors ${
-                  active ? 'bg-brand-dark' : 'bg-[#d9d9d9] group-hover:bg-[#9ca3af]'
-                }`}
-              />
-            </button>
-          )
-        })}
-      </div>
+      <PillTabs tabs={differentiatorTabs} activeKey={activeKey} onChange={setActiveKey} />
 
       <AnimatePresence mode="wait">
         <motion.div
@@ -144,7 +117,7 @@ export default function DifferentiatorsTabs() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="w-full gap-8 py-8"
+          className="w-full pb-8 pt-5"
         >
           {activeTab.layout === 'quad' ? (
             <div className="grid w-full grid-cols-1 gap-x-[30px] gap-y-6 md:grid-cols-2">

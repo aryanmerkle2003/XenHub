@@ -15,7 +15,7 @@ export default function LabImagesPopup({
       open={site !== null}
       onClose={onClose}
       title={site?.title ?? ''}
-      subtitle="XEN LAB IMAGES"
+      subtitle="XEN LAB Images"
       variant="sheet"
     >
       <div className="flex flex-col gap-6">

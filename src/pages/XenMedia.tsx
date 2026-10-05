@@ -18,9 +18,9 @@ import PageLayout from '../layouts/PageLayout'
 
 const sections = [
   { id: 'xen-lab-images', label: 'XEN LAB Images' },
-  { id: 'workshop-videos', label: 'Workshop Videos' },
   { id: 'logos', label: 'Logos' },
   { id: 'virtual-backgrounds', label: 'Virtual Backgrounds' },
+  { id: 'workshop-videos', label: 'Workshop Videos' },
 ]
 
 function SectionHeader({
@@ -91,29 +91,6 @@ export default function XenMedia() {
             </div>
           </section>
 
-          <section id="workshop-videos" className="flex flex-col gap-3">
-            <SectionHeader
-              title="Workshop Videos"
-              comingSoon
-              description="Explore XEN workshop videos to see the creative and collaborative energy that shape every hands-on experience."
-            />
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <MediaCard
-                title="XEN"
-                count={workshopVideoThumbnails.length}
-                disabled
-                ariaLabel="Workshop videos are coming soon"
-              >
-                <ThumbnailStrip
-                  images={workshopVideoThumbnails.slice(0, 3).map((v) => v.src)}
-                  remaining={workshopVideoThumbnails.length - 2}
-                  showPlay
-                  playIcon={iconVideoPlay}
-                />
-              </MediaCard>
-            </div>
-          </section>
-
           <section id="logos" className="flex flex-col gap-3">
             <SectionHeader
               title="Logos"
@@ -166,6 +143,29 @@ export default function XenMedia() {
                   </div>
                 </MediaCard>
               ))}
+            </div>
+          </section>
+
+          <section id="workshop-videos" className="flex flex-col gap-3">
+            <SectionHeader
+              title="Workshop Videos"
+              comingSoon
+              description="Explore XEN workshop videos to see the creative and collaborative energy that shape every hands-on experience."
+            />
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <MediaCard
+                title="XEN"
+                count={workshopVideoThumbnails.length}
+                disabled
+                ariaLabel="Workshop videos are coming soon"
+              >
+                <ThumbnailStrip
+                  images={workshopVideoThumbnails.slice(0, 3).map((v) => v.src)}
+                  remaining={workshopVideoThumbnails.length - 2}
+                  showPlay
+                  playIcon={iconVideoPlay}
+                />
+              </MediaCard>
             </div>
           </section>
         </div>

@@ -75,7 +75,7 @@ export default function BookMasterDetail() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="flex w-full flex-col items-start rounded-tl-sm rounded-bl-sm border border-[#e4e4e4] bg-white shadow-[0px_12px_24px_0px_rgba(0,0,0,0.05)]"
+            className="flex w-full flex-col items-start rounded-[10px] border border-[#e4e4e4] bg-white shadow-[0px_12px_24px_0px_rgba(0,0,0,0.05)]"
           >
             <div className="flex w-full flex-col gap-6 p-8">
               <div className="flex flex-col gap-2">
