@@ -4,6 +4,7 @@ import CommunicationTemplates from './pages/CommunicationTemplates'
 import ConnectWithUs from './pages/ConnectWithUs'
 import ExploreXen from './pages/ExploreXen'
 import Home from './pages/Home'
+import ProprietaryXenTools from './pages/ProprietaryXenTools'
 import PresentationDecks from './pages/PresentationDecks'
 import WorkshopOverview from './pages/WorkshopOverview'
 import XenBooksLibrary from './pages/XenBooksLibrary'
@@ -35,6 +36,7 @@ function App() {
         <Route path="/connect-with-us" element={<ConnectWithUs />} />
         <Route path="/communication-templates" element={<CommunicationTemplates />} />
         <Route path="/xen-media" element={<XenMedia />} />
+        <Route path="/proprietary-xentools" element={<ProprietaryXenTools />} />
         <Route path="/xen-tools" element={<XenTools />} />
       </Routes>
     </>

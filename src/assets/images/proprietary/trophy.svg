@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="trophy" clip-path="url(#clip0_0_75)">
+<path id="trophy_2" d="M10 12C12.8571 12 15.7143 9.33333 15.7143 5.33333V0H4.28571V5.33333C4.28571 9.33333 7.14286 12 10 12ZM10 12V17.3333M4.28571 2.66667H0V5.33333C0 8 2.85714 9.33333 5.71429 9.33333M15.7143 2.66667H20V5.33333C20 8 17.1429 9.33333 14.2857 9.33333M4.28571 20H15.7143M7.14286 17.3333H12.8571" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_0_75">
+<rect width="20" height="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>
