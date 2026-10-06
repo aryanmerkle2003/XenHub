@@ -22,14 +22,14 @@ export const spocs: Spoc[] = [
     avatar: avatarKapil,
   },
   {
-    name: 'Melinda Rodrigues',
-    role: 'Lead Strategy Analyst',
-    avatar: avatarMelinda,
-  },
-  {
     name: 'Khushi Kavathekar',
     role: 'Senior Strategist',
     avatar: avatarKhushi,
+  },
+  {
+    name: 'Melinda Rodrigues',
+    role: 'Lead Strategy Analyst',
+    avatar: avatarMelinda,
   },
   {
     name: 'Saadeen Anwar',
