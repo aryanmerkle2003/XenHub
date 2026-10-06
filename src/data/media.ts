@@ -51,37 +51,52 @@ export const labSites: LabSite[] = [buildLabSite('pnq', 'PNQ'), buildLabSite('bl
 export type WorkshopVideo = {
   id: string
   title: string
-  orientation: 'landscape' | 'portrait'
   thumbnail: string
   // Opens the SharePoint player in a new tab
   viewUrl: string
 }
 
-// workshop-videos/xen-workshop-video-NN-thumbnail
-const videoThumb = (n: number) => {
-  const id = `xen-workshop-video-${String(n).padStart(2, '0')}-thumbnail`
-  return asset(`workshop-videos/${id}`)
+export type WorkshopVideoGroup = {
+  id: string
+  title: string
+  videos: WorkshopVideo[]
 }
 
-const FAST_CURRENTS = 'https://globalappsportal.sharepoint.com/:v:/s/XENTeam/IQBJRgoFv5KzQZrOFLWldjEdAZvcw3gu3BQf6CzcaRBzJyE?e=0DmdGE'
-const TESTIMONIALS = 'https://globalappsportal.sharepoint.com/:v:/s/XENTeam/IQDGiZU5NgY5SaEHTU8-ku_UAfku7C1n_VoIY5S3EgWgCC8?e=RRcDaL'
+// workshop-videos/<group>/<prefix>-NN-thumbnail  (add more videos to a group by adding 02, 03, ...)
+const videoThumb = (group: string, prefix: string, n: number) =>
+  asset(`workshop-videos/${group}/${prefix}-${String(n).padStart(2, '0')}-thumbnail`)
 
-export const workshopVideos: WorkshopVideo[] = [
+const TESTIMONIALS = 'https://globalappsportal.sharepoint.com/:v:/s/XENTeam/IQDGiZU5NgY5SaEHTU8-ku_UAfku7C1n_VoIY5S3EgWgCC8?e=RRcDaL'
+const FAST_CURRENTS = 'https://globalappsportal.sharepoint.com/:v:/s/XENTeam/IQBJRgoFv5KzQZrOFLWldjEdAZvcw3gu3BQf6CzcaRBzJyE?e=0DmdGE'
+
+export const workshopVideoGroups: WorkshopVideoGroup[] = [
   {
-    id: 'fast-currents-xen-lab-launch',
-    title: 'Fast Currents XEN LAB Launch',
-    orientation: 'portrait',
-    thumbnail: videoThumb(1),
-    viewUrl: FAST_CURRENTS,
+    id: 'testimonials',
+    title: 'Testimonials',
+    videos: [
+      {
+        id: 'xen-practice-testimonials',
+        title: 'XEN Practice Testimonials',
+        thumbnail: videoThumb('testimonials', 'xen-testimonials', 1),
+        viewUrl: TESTIMONIALS,
+      },
+    ],
   },
   {
-    id: 'xen-practice-testimonials',
-    title: 'XEN Practice Testimonials',
-    orientation: 'landscape',
-    thumbnail: videoThumb(2),
-    viewUrl: TESTIMONIALS,
+    id: 'xen-lab-launch',
+    title: 'XEN Lab Launch',
+    videos: [
+      {
+        id: 'fast-currents-xen-lab-launch',
+        title: 'Fast Currents XEN LAB Launch',
+        thumbnail: videoThumb('xen-lab-launch', 'xen-lab-launch', 1),
+        viewUrl: FAST_CURRENTS,
+      },
+    ],
   },
 ]
+
+export const workshopVideos: WorkshopVideo[] = workshopVideoGroups.flatMap((group) => group.videos)
 
 export type LogoVariantKey = 'default' | 'reversed' | 'white' | 'black'
 export type LogoGenre = {

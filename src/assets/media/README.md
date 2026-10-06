@@ -11,7 +11,8 @@ Do not rename folders.
 | `xen-lab-images/pnq/activities/` | `pnq-activities-01` ... `06` | 6 |
 | `xen-lab-images/pnq/artifacts/` | `pnq-artifacts-01` ... `05` | 5 |
 | `xen-lab-images/blr/...` | same four folders, files start with `blr-` instead of `pnq-` | 23 |
-| `workshop-videos/` | `xen-workshop-video-01-thumbnail` (Fast Currents, portrait), `xen-workshop-video-02-thumbnail` (XEN Practice Testimonials, landscape) | 2 |
+| `workshop-videos/testimonials/` | `xen-testimonials-01-thumbnail` (add `-02`, `-03` ... for more videos in this row) | 1 |
+| `workshop-videos/xen-lab-launch/` | `xen-lab-launch-01-thumbnail` (add `-02`, ... for more) | 1 |
 | `virtual-backgrounds/` | `xen-virtual-background-light`, `xen-virtual-background-dark`, `merkle-virtual-background-light`, `merkle-virtual-background-dark` | 4 |
 
 The first photo of The Lab, Breakout Rooms and Activities is what shows on the PNQ / BLR cards on the page.
