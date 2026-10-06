@@ -15,7 +15,7 @@ const sections = [
 export default function XenTools() {
   return (
     <PageLayout>
-      <div className="flex w-full items-start gap-[50px] px-12 pb-20 pt-14">
+      <div className="flex w-full items-start gap-[50px] px-12 pt-14">
         <div className="flex min-w-0 flex-1 flex-col">
           <div id="about-xentools" className="flex flex-col gap-4 pt-2">
             <h1 className="text-[36px] font-semibold leading-[1.15] text-[#111827]">
