@@ -3,13 +3,14 @@ import iconVideoPlay from '../assets/images/media/icon-video-play.svg'
 import LabImagesPopup from '../components/media/LabImagesPopup'
 import LogosPopup from '../components/media/LogosPopup'
 import MediaCard, { ThumbnailStrip } from '../components/media/MediaCard'
+import VideosPopup from '../components/media/VideosPopup'
 import VirtualBackgroundsPopup from '../components/media/VirtualBackgroundsPopup'
 import OnThisPage from '../components/nav/OnThisPage'
 import {
   labSites,
   logoGenres,
   virtualBackgroundSets,
-  workshopVideoThumbnails,
+  workshopVideos,
   type LabSite,
   type LogoGenre,
   type VirtualBackgroundSet,
@@ -50,6 +51,7 @@ function SectionHeader({
 export default function XenMedia() {
   const [labSite, setLabSite] = useState<LabSite | null>(null)
   const [logoGenre, setLogoGenre] = useState<LogoGenre | null>(null)
+  const [videosOpen, setVideosOpen] = useState(false)
   const [backgroundSet, setBackgroundSet] = useState<VirtualBackgroundSet | null>(null)
 
   return (
@@ -149,22 +151,32 @@ export default function XenMedia() {
           <section id="workshop-videos" className="flex flex-col gap-3">
             <SectionHeader
               title="Workshop Videos"
-              comingSoon
               description="Explore XEN workshop videos to see the creative and collaborative energy that shape every hands-on experience."
             />
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <MediaCard
                 title="XEN"
-                count={workshopVideoThumbnails.length}
-                disabled
-                ariaLabel="Workshop videos are coming soon"
+                count={workshopVideos.length}
+                ariaLabel="Open workshop videos"
+                onOpen={() => setVideosOpen(true)}
               >
-                <ThumbnailStrip
-                  images={workshopVideoThumbnails.slice(0, 3).map((v) => v.src)}
-                  remaining={workshopVideoThumbnails.length - 2}
-                  showPlay
-                  playIcon={iconVideoPlay}
-                />
+                <div className="flex h-[78px] w-full items-center gap-2 overflow-hidden rounded-lg">
+                  {workshopVideos.map((video) => (
+                    <div
+                      key={video.id}
+                      className={`relative h-full shrink-0 overflow-hidden rounded-md ${
+                        video.orientation === 'portrait' ? 'aspect-[9/16]' : 'aspect-video'
+                      }`}
+                    >
+                      <img src={video.thumbnail} alt="" className="size-full object-cover" />
+                      <img
+                        src={iconVideoPlay}
+                        alt=""
+                        className="absolute left-1/2 top-1/2 size-6 -translate-x-1/2 -translate-y-1/2"
+                      />
+                    </div>
+                  ))}
+                </div>
               </MediaCard>
             </div>
           </section>
@@ -174,6 +186,7 @@ export default function XenMedia() {
       </div>
 
       <LabImagesPopup site={labSite} onClose={() => setLabSite(null)} />
+      <VideosPopup open={videosOpen} videos={workshopVideos} onClose={() => setVideosOpen(false)} />
       <LogosPopup genre={logoGenre} onClose={() => setLogoGenre(null)} />
       <VirtualBackgroundsPopup set={backgroundSet} onClose={() => setBackgroundSet(null)} />
     </PageLayout>

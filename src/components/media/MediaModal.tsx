@@ -7,7 +7,7 @@ type MediaModalProps = {
   onClose: () => void
   title: string
   subtitle: string
-  variant: 'sheet' | 'center'
+  variant: 'sheet' | 'sheet-fit' | 'center'
   children: ReactNode
 }
 
@@ -26,7 +26,8 @@ export default function MediaModal({ open, onClose, title, subtitle, variant, ch
     }
   }, [open, onClose])
 
-  const isSheet = variant === 'sheet'
+  const isSheet = variant !== 'center'
+  const isFit = variant === 'sheet-fit'
 
   return (
     <AnimatePresence>
@@ -49,7 +50,7 @@ export default function MediaModal({ open, onClose, title, subtitle, variant, ch
             aria-label={`${title} ${subtitle}`}
             className={`flex w-full max-w-[1400px] flex-col gap-8 bg-white px-6 pt-[50px] md:px-[75px] ${
               isSheet
-                ? 'h-full rounded-t-2xl'
+                ? `${isFit ? 'max-h-full' : 'h-full'} rounded-t-2xl`
                 : 'max-h-[90vh] overflow-y-auto rounded-2xl pb-[75px]'
             }`}
             initial={{ opacity: 0, y: isSheet ? 60 : 16 }}
@@ -72,7 +73,7 @@ export default function MediaModal({ open, onClose, title, subtitle, variant, ch
               </button>
             </div>
             {isSheet ? (
-              <div className="min-h-0 flex-1 overflow-y-auto pb-[75px]">{children}</div>
+              <div className={`min-h-0 overflow-y-auto pb-[75px] ${isFit ? '' : 'flex-1'}`}>{children}</div>
             ) : (
               children
             )}

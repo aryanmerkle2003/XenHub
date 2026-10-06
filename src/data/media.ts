@@ -48,11 +48,40 @@ function buildLabSite(key: 'pnq' | 'blr', title: string): LabSite {
 
 export const labSites: LabSite[] = [buildLabSite('pnq', 'PNQ'), buildLabSite('blr', 'BLR')]
 
+export type WorkshopVideo = {
+  id: string
+  title: string
+  orientation: 'landscape' | 'portrait'
+  thumbnail: string
+  // Opens the SharePoint player in a new tab
+  viewUrl: string
+}
+
 // workshop-videos/xen-workshop-video-NN-thumbnail
-export const workshopVideoThumbnails: MediaPhoto[] = Array.from({ length: 6 }, (_, i) => {
-  const id = `xen-workshop-video-${String(i + 1).padStart(2, '0')}-thumbnail`
-  return { id, src: asset(`workshop-videos/${id}`) }
-})
+const videoThumb = (n: number) => {
+  const id = `xen-workshop-video-${String(n).padStart(2, '0')}-thumbnail`
+  return asset(`workshop-videos/${id}`)
+}
+
+const FAST_CURRENTS = 'https://globalappsportal.sharepoint.com/:v:/s/XENTeam/IQBJRgoFv5KzQZrOFLWldjEdAZvcw3gu3BQf6CzcaRBzJyE?e=0DmdGE'
+const TESTIMONIALS = 'https://globalappsportal.sharepoint.com/:v:/s/XENTeam/IQDGiZU5NgY5SaEHTU8-ku_UAfku7C1n_VoIY5S3EgWgCC8?e=RRcDaL'
+
+export const workshopVideos: WorkshopVideo[] = [
+  {
+    id: 'fast-currents-xen-lab-launch',
+    title: 'Fast Currents XEN LAB Launch',
+    orientation: 'portrait',
+    thumbnail: videoThumb(1),
+    viewUrl: FAST_CURRENTS,
+  },
+  {
+    id: 'xen-practice-testimonials',
+    title: 'XEN Practice Testimonials',
+    orientation: 'landscape',
+    thumbnail: videoThumb(2),
+    viewUrl: TESTIMONIALS,
+  },
+]
 
 export type LogoVariantKey = 'default' | 'reversed' | 'white' | 'black'
 export type LogoGenre = {
