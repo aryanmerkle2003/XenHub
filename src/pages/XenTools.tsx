@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import OnThisPage from '../components/nav/OnThisPage'
 import FocusAreaDiagram from '../components/xentools/FocusAreaDiagram'
@@ -68,12 +69,12 @@ export default function XenTools() {
               proprietary XENTools purpose-built to fill those gaps,
               tackle specific challenges, and drive better outcomes.
             </p>
-            <a
-              href="#"
+            <Link
+              to="/proprietary-xentools"
               className="text-sm font-semibold text-[#1e1eb5] underline"
             >
               Proprietary XENTools Library →
-            </a>
+            </Link>
           </Reveal>
 
           <Reveal
