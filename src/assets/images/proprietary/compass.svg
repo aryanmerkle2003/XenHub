@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="compass" clip-path="url(#clip0_0_103)">
+<path id="north-star" d="M10 0L12.2222 7.77778L20 10L12.2222 12.2222L10 20L7.77778 12.2222L0 10L7.77778 7.77778L10 0Z" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_0_103">
+<rect width="20" height="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>
