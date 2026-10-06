@@ -19,9 +19,9 @@ import PageLayout from '../layouts/PageLayout'
 
 const sections = [
   { id: 'xen-lab-images', label: 'XEN LAB Images' },
+  { id: 'workshop-videos', label: 'Workshop Videos' },
   { id: 'logos', label: 'Logos' },
   { id: 'virtual-backgrounds', label: 'Virtual Backgrounds' },
-  { id: 'workshop-videos', label: 'Workshop Videos' },
 ]
 
 function SectionHeader({
@@ -93,6 +93,32 @@ export default function XenMedia() {
             </div>
           </section>
 
+          <section id="workshop-videos" className="flex flex-col gap-3">
+            <SectionHeader
+              title="Workshop Videos"
+              description="Explore XEN workshop videos to see the creative and collaborative energy that shape every hands-on experience."
+            />
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <MediaCard
+                title="XEN"
+                count={workshopVideos.length}
+                ariaLabel="Open workshop videos"
+                onOpen={() => setVideosOpen(true)}
+              >
+                <div className="flex w-full gap-2">
+                  {workshopVideos.map((video) => (
+                    <img
+                      key={video.id}
+                      src={video.thumbnail}
+                      alt=""
+                      className="aspect-video min-w-0 flex-1 rounded-lg border-[1.5px] border-[#d6d6df] object-cover"
+                    />
+                  ))}
+                </div>
+              </MediaCard>
+            </div>
+          </section>
+
           <section id="logos" className="flex flex-col gap-3">
             <SectionHeader
               title="Logos"
@@ -145,32 +171,6 @@ export default function XenMedia() {
                   </div>
                 </MediaCard>
               ))}
-            </div>
-          </section>
-
-          <section id="workshop-videos" className="flex flex-col gap-3">
-            <SectionHeader
-              title="Workshop Videos"
-              description="Explore XEN workshop videos to see the creative and collaborative energy that shape every hands-on experience."
-            />
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <MediaCard
-                title="XEN"
-                count={workshopVideos.length}
-                ariaLabel="Open workshop videos"
-                onOpen={() => setVideosOpen(true)}
-              >
-                <div className="flex w-full gap-2">
-                  {workshopVideos.map((video) => (
-                    <img
-                      key={video.id}
-                      src={video.thumbnail}
-                      alt=""
-                      className="aspect-video min-w-0 flex-1 rounded-lg border-[1.5px] border-[#d6d6df] object-cover"
-                    />
-                  ))}
-                </div>
-              </MediaCard>
             </div>
           </section>
         </div>
