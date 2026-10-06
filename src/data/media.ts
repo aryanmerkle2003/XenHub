@@ -64,7 +64,7 @@ const videoThumb = (n: number) => {
 }
 
 const FAST_CURRENTS = 'https://globalappsportal.sharepoint.com/:v:/s/XENTeam/IQBJRgoFv5KzQZrOFLWldjEdAZvcw3gu3BQf6CzcaRBzJyE?e=0DmdGE'
-const TESTIMONIALS = 'https://globalappsportal.sharepoint.com/:v:/s/XENTeam/IQBJRgoFv5KzQZrOFLWldjEdAZvcw3gu3BQf6CzcaRBzJyE?e=1GMa0U'
+const TESTIMONIALS = 'https://globalappsportal.sharepoint.com/:v:/s/XENTeam/IQDGiZU5NgY5SaEHTU8-ku_UAfku7C1n_VoIY5S3EgWgCC8?e=RRcDaL'
 
 export const workshopVideos: WorkshopVideo[] = [
   {
