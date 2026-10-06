@@ -73,7 +73,7 @@ export default function MediaModal({ open, onClose, title, subtitle, variant, ch
               </button>
             </div>
             {isSheet ? (
-              <div className={`min-h-0 overflow-y-auto pb-[75px] ${isFit ? '' : 'flex-1'}`}>{children}</div>
+              <div className={`min-h-0 overflow-y-auto ${isFit ? 'pb-[50px]' : 'flex-1 pb-[75px]'}`}>{children}</div>
             ) : (
               children
             )}

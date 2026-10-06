@@ -43,24 +43,22 @@ export default function MediaCard({
 export function ThumbnailStrip({
   images,
   remaining,
-  showPlay = false,
-  playIcon,
 }: {
   images: string[]
   remaining: number
-  showPlay?: boolean
-  playIcon?: string
 }) {
   return (
-    <div className="flex h-[78px] w-full gap-2 overflow-hidden rounded-lg">
+    <div className="flex h-[78px] w-full gap-2">
       {images.map((src, i) => {
         const isLast = i === images.length - 1 && remaining > 0
         return (
-          <div key={i} className="relative h-full min-w-0 flex-1 overflow-hidden rounded-md">
+          <div
+            key={i}
+            className={`relative h-full min-w-0 flex-1 overflow-hidden rounded-lg ${
+              isLast ? '' : 'border-[1.5px] border-[#d6d6df]'
+            }`}
+          >
             <img src={src} alt="" className="size-full object-cover" />
-            {showPlay && !isLast && playIcon && (
-              <img src={playIcon} alt="" className="absolute left-1/2 top-1/2 size-6 -translate-x-1/2 -translate-y-1/2" />
-            )}
             {isLast && (
               <div className="absolute inset-0 flex items-center justify-center bg-black/50 text-xs font-bold text-[#f2f2f4]">
                 +{remaining}

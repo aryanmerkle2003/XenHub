@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import iconVideoPlay from '../assets/images/media/icon-video-play.svg'
 import LabImagesPopup from '../components/media/LabImagesPopup'
 import LogosPopup from '../components/media/LogosPopup'
 import MediaCard, { ThumbnailStrip } from '../components/media/MediaCard'
@@ -10,6 +9,7 @@ import {
   labSites,
   logoGenres,
   virtualBackgroundSets,
+  workshopVideoGroups,
   workshopVideos,
   type LabSite,
   type LogoGenre,
@@ -139,7 +139,7 @@ export default function XenMedia() {
                         key={item.id}
                         src={item.src}
                         alt=""
-                        className="aspect-video min-w-0 flex-1 rounded-md object-cover"
+                        className="aspect-video min-w-0 flex-1 rounded-lg border-[1.5px] border-[#d6d6df] object-cover"
                       />
                     ))}
                   </div>
@@ -160,21 +160,14 @@ export default function XenMedia() {
                 ariaLabel="Open workshop videos"
                 onOpen={() => setVideosOpen(true)}
               >
-                <div className="flex h-[78px] w-full items-center gap-2 overflow-hidden rounded-lg">
+                <div className="flex w-full gap-2">
                   {workshopVideos.map((video) => (
-                    <div
+                    <img
                       key={video.id}
-                      className={`relative h-full shrink-0 overflow-hidden rounded-md ${
-                        video.orientation === 'portrait' ? 'aspect-[9/16]' : 'aspect-video'
-                      }`}
-                    >
-                      <img src={video.thumbnail} alt="" className="size-full object-cover" />
-                      <img
-                        src={iconVideoPlay}
-                        alt=""
-                        className="absolute left-1/2 top-1/2 size-6 -translate-x-1/2 -translate-y-1/2"
-                      />
-                    </div>
+                      src={video.thumbnail}
+                      alt=""
+                      className="aspect-video min-w-0 flex-1 rounded-lg border-[1.5px] border-[#d6d6df] object-cover"
+                    />
                   ))}
                 </div>
               </MediaCard>
@@ -186,7 +179,7 @@ export default function XenMedia() {
       </div>
 
       <LabImagesPopup site={labSite} onClose={() => setLabSite(null)} />
-      <VideosPopup open={videosOpen} videos={workshopVideos} onClose={() => setVideosOpen(false)} />
+      <VideosPopup open={videosOpen} groups={workshopVideoGroups} onClose={() => setVideosOpen(false)} />
       <LogosPopup genre={logoGenre} onClose={() => setLogoGenre(null)} />
       <VirtualBackgroundsPopup set={backgroundSet} onClose={() => setBackgroundSet(null)} />
     </PageLayout>
