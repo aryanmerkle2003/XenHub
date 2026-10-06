@@ -5,8 +5,8 @@ import PageLayout from '../layouts/PageLayout'
 
 export default function ProprietaryXenTools() {
   return (
-    <PageLayout>
-      <div className="flex min-h-screen w-full flex-col justify-between gap-16 px-14 pt-10">
+    <PageLayout footerClassName="px-14">
+      <div className="flex w-full flex-1 flex-col justify-between gap-16 px-14 pt-10">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-3 pr-0 lg:pr-[252px]">
             <h1 className="text-[36px] font-bold leading-[1.15] text-[#111827]">
@@ -25,14 +25,8 @@ export default function ProprietaryXenTools() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-[35px]">
+        <div className="flex flex-col">
           <ConnectBanner flush />
-          <div className="flex items-center justify-between border-t border-[#edeff2] py-5 text-[13px] text-[#6b7280]">
-            <p>© 2026 Merkle XEN.</p>
-            <a href="mailto:xen.core@merkle.com" className="font-medium">
-              xen.core@merkle.com
-            </a>
-          </div>
         </div>
       </div>
     </PageLayout>

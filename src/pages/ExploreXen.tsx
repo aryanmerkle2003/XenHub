@@ -23,7 +23,7 @@ const carouselImages = [slide1, slide2, carousel1, carousel2, carousel3, carouse
 export default function ExploreXen() {
   return (
     <PageLayout>
-      <div className="flex w-full items-start gap-[50px] px-12 pb-20 pt-14">
+      <div className="flex w-full items-start gap-[50px] px-12 pt-14">
         <div className="flex min-w-0 flex-1 flex-col gap-7">
           <div id="what-is-xen" className="flex flex-col gap-5 pt-[9px]">
             <h1 className="text-[36px] font-semibold leading-[1.15] text-[#111827]">

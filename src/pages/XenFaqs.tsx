@@ -13,7 +13,7 @@ function Divider() {
 export default function XenFaqs() {
   return (
     <PageLayout>
-      <div className="flex w-full items-start gap-[50px] px-12 pb-20 pt-14">
+      <div className="flex w-full items-start gap-[50px] px-12 pt-14">
         <div className="flex min-w-0 flex-1 flex-col gap-9">
           <div className="flex flex-col gap-4">
             <h1 className="text-[36px] font-semibold leading-[normal] text-[#111827]">

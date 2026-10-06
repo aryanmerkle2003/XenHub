@@ -1,5 +1,4 @@
 import ConnectBanner from '../components/ConnectBanner'
-import Footer from '../components/Footer'
 import SpocCard from '../components/connect/SpocCard'
 import { spocs } from '../data/spocs'
 import PageLayout from '../layouts/PageLayout'
@@ -11,7 +10,7 @@ function Divider() {
 export default function ConnectWithUs() {
   return (
     <PageLayout>
-      <div className="flex w-full flex-col gap-9 px-12 pb-20 pt-14">
+      <div className="flex w-full flex-col gap-9 px-12 pt-14">
         <div className="flex flex-col gap-3.5">
           <h1 className="text-[36px] font-semibold leading-[normal] text-[#111827]">
             Ask Us Anything About XEN
@@ -32,8 +31,6 @@ export default function ConnectWithUs() {
         <Divider />
 
         <ConnectBanner flush />
-
-        <Footer />
       </div>
     </PageLayout>
   )
