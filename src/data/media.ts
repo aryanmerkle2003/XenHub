@@ -55,8 +55,6 @@ export type WorkshopVideo = {
   thumbnail: string
   // Opens the SharePoint player in a new tab
   viewUrl: string
-  // Opens the SharePoint download in a new tab
-  downloadUrl: string
 }
 
 // workshop-videos/xen-workshop-video-NN-thumbnail
@@ -65,8 +63,8 @@ const videoThumb = (n: number) => {
   return asset(`workshop-videos/${id}`)
 }
 
-const FAST_CURRENTS = 'https://globalappsportal.sharepoint.com/:v:/s/XENTeam/IQBJRgoFv5KzQZrOFLWldjEdAZvcw3gu3BQf6CzcaRBzJyE?e=RSb1bv'
-const TESTIMONIALS = 'https://globalappsportal.sharepoint.com/:v:/s/XENTeam/IQDGiZU5NgY5SaEHTU8-ku_UAfku7C1n_VoIY5S3EgWgCC8?e=4ZdOel'
+const FAST_CURRENTS = 'https://globalappsportal.sharepoint.com/:v:/s/XENTeam/IQBJRgoFv5KzQZrOFLWldjEdAZvcw3gu3BQf6CzcaRBzJyE?e=0DmdGE'
+const TESTIMONIALS = 'https://globalappsportal.sharepoint.com/:v:/s/XENTeam/IQBJRgoFv5KzQZrOFLWldjEdAZvcw3gu3BQf6CzcaRBzJyE?e=1GMa0U'
 
 export const workshopVideos: WorkshopVideo[] = [
   {
@@ -75,7 +73,6 @@ export const workshopVideos: WorkshopVideo[] = [
     orientation: 'portrait',
     thumbnail: videoThumb(1),
     viewUrl: FAST_CURRENTS,
-    downloadUrl: `${FAST_CURRENTS}&download=1`,
   },
   {
     id: 'xen-practice-testimonials',
@@ -83,7 +80,6 @@ export const workshopVideos: WorkshopVideo[] = [
     orientation: 'landscape',
     thumbnail: videoThumb(2),
     viewUrl: TESTIMONIALS,
-    downloadUrl: `${TESTIMONIALS}&download=1`,
   },
 ]
 

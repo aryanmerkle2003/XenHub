@@ -1,4 +1,3 @@
-import iconDownload from '../../assets/images/media/icon-download.svg'
 import iconVideoPlay from '../../assets/images/media/icon-video-play.svg'
 import type { WorkshopVideo } from '../../data/media'
 import MediaModal from './MediaModal'
@@ -39,15 +38,6 @@ export default function VideosPopup({
               <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/75 via-black/25 to-transparent p-3 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
                 <p className="text-sm font-semibold leading-5 text-white">{video.title}</p>
               </div>
-            </a>
-            <a
-              href={video.downloadUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex w-fit items-center gap-1 text-[11px] font-medium text-[#6b7280] transition-colors hover:text-[#121212]"
-            >
-              <img src={iconDownload} alt="" className="size-3" />
-              MP4
             </a>
           </div>
         ))}
