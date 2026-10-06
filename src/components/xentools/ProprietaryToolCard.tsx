@@ -4,7 +4,7 @@ import type { ProprietaryTool } from '../../data/proprietaryTools'
 
 export default function ProprietaryToolCard({ title, description, icon, figJamUrl }: ProprietaryTool) {
   return (
-    <div className="relative z-0 h-[334px] overflow-clip rounded-2xl border border-[#edeff2] bg-[#5d3abf] shadow-[0px_4px_16px_0px_rgba(0,0,0,0.03)] transition-[transform,box-shadow] duration-200 ease-out hover:z-10 hover:scale-[1.03] hover:shadow-[0px_14px_32px_0px_rgba(0,0,0,0.18)]">
+    <div className="relative h-[334px] overflow-clip rounded-2xl border border-[#edeff2] bg-[#5d3abf] shadow-[0px_4px_16px_0px_rgba(0,0,0,0.03)]">
       <div className="absolute left-[95.89px] top-[-41.8px] size-[149.596px] rounded-full bg-white/[0.08]" />
       <div className="absolute left-[-24.79px] top-[226.81px] size-[169.977px] rounded-full bg-white/[0.04]" />
 
