@@ -32,7 +32,7 @@ export const navSections: NavSection[] = [
     items: [
       { label: 'Communication Templates', to: '/communication-templates' },
       { label: 'XENTools', to: '/xen-tools' },
-      { label: 'XENTools Recommender', comingSoon: true },
+      { label: 'XENTools Recommender', to: '/xentools-recommender' },
       { label: 'Proprietary XENTools', to: '/proprietary-xentools' },
       { label: 'XEN Skills', comingSoon: true },
     ],
