@@ -40,7 +40,7 @@ export default function Sidebar() {
                     )}
                   </>
                 )
-                const rowClasses = `flex items-center gap-2 rounded-lg py-[7px] pl-7 pr-3 text-[14px] transition-colors ${
+                const rowClasses = `flex items-center gap-2 rounded-lg py-[7px] ${item.indent ? 'pl-10' : 'pl-7'} pr-3 text-[14px] transition-colors ${
                   active
                     ? 'bg-brand text-white'
                     : 'text-[#6b7280]'

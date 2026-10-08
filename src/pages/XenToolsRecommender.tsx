@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import iconArrowRight from '../assets/images/recommender/arrow-right.svg'
 import iconLibrary from '../assets/images/recommender/library-big.svg'
+import { AnimatePresence } from 'framer-motion'
 import LibraryOverlay from '../components/library/LibraryOverlay'
 import RecommenderWizard from '../components/recommender/RecommenderWizard'
 import ToolCardShowcase from '../components/xentools/ToolCardShowcase'
@@ -87,7 +88,9 @@ export default function XenToolsRecommender() {
         <img src={iconLibrary} alt="" className="size-[19px]" />
       </button>
 
-      {libraryOpen && <LibraryOverlay onClose={() => setLibraryOpen(false)} />}
+      <AnimatePresence>
+        {libraryOpen && <LibraryOverlay onClose={() => setLibraryOpen(false)} />}
+      </AnimatePresence>
       </RecommenderDataProvider>
     </PageLayout>
   )

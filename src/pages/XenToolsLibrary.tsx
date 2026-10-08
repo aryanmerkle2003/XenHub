@@ -7,7 +7,7 @@ export default function XenToolsLibrary() {
     <PageLayout>
       <div className="min-h-screen bg-white px-6 pb-10 pt-14 md:px-[75px]">
         <RecommenderDataProvider>
-          <LibraryContent />
+          <LibraryContent fadeInOnLoad />
         </RecommenderDataProvider>
       </div>
     </PageLayout>

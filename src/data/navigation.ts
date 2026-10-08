@@ -2,6 +2,7 @@ export type NavSubItem = {
   label: string
   to?: string
   comingSoon?: boolean
+  indent?: boolean
 }
 
 export type NavSection = {
@@ -32,9 +33,9 @@ export const navSections: NavSection[] = [
     items: [
       { label: 'Communication Templates', to: '/communication-templates' },
       { label: 'XENTools', to: '/xen-tools' },
-      { label: 'XENTools Recommender', to: '/xentools-recommender' },
-      { label: 'XENTools Library', to: '/xentools-library' },
-      { label: 'Proprietary XENTools', to: '/proprietary-xentools' },
+      { label: 'XENTools Recommender', to: '/xentools-recommender', indent: true },
+      { label: 'XENTools Library', to: '/xentools-library', indent: true },
+      { label: 'Proprietary XENTools', to: '/proprietary-xentools', indent: true },
       { label: 'XEN Skills', comingSoon: true },
     ],
   },

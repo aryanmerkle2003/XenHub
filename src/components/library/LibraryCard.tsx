@@ -16,7 +16,7 @@ type Props = { tool: Tool; color: string }
 export default function LibraryCard({ tool, color }: Props) {
   return (
     <div
-      className="group/card relative flex min-h-[334px] flex-col overflow-hidden rounded-2xl border border-[#edeff2] shadow-[0px_4px_16px_0px_rgba(0,0,0,0.03)] transition-shadow duration-200 hover:shadow-[0px_13.5px_47.4px_0px_rgba(0,0,0,0.44)]"
+      className="group/card relative flex h-[334px] flex-col overflow-clip rounded-2xl border border-[#edeff2] shadow-[0px_4px_16px_0px_rgba(0,0,0,0.03)] transition-shadow duration-200 hover:shadow-[0px_13.5px_47.4px_0px_rgba(0,0,0,0.44)]"
       style={{ backgroundColor: color }}
     >
       <div className="pointer-events-none absolute -top-[42px] left-[96px] size-[150px] rounded-full bg-white/[0.08]" />
