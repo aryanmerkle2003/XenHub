@@ -75,7 +75,7 @@ export default function SentencePicker({
   const textClass = 'text-[24px] font-medium text-[#111827]'
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-x-3.5 gap-y-3">
+    <div className="flex min-h-[56px] flex-wrap items-center justify-center gap-x-3.5 gap-y-3">
       <p className={textClass}>{sentenceParts[0]}</p>
       <Pill
         pillRef={focusRef}
