@@ -1,20 +1,26 @@
+import type { Ref } from 'react'
 import { CloseIcon } from './icons'
 
-const pillBase =
+export const pillBase =
   'relative inline-flex items-center justify-center whitespace-nowrap rounded-[22px] px-6 py-2.5 text-[20px] transition-colors'
 
+export const filledPillClasses =
+  'border-2 border-[#1e1eb5] bg-[#1e1eb5] font-semibold text-white'
+
 type PillProps = {
+  pillRef: Ref<HTMLSpanElement>
   placeholder: string
   label?: string
   active: boolean
   onClear: () => void
 }
 
-function Pill({ placeholder, label, active, onClear }: PillProps) {
+function Pill({ pillRef, placeholder, label, active, onClear }: PillProps) {
   if (label) {
     return (
       <span
-        className={`${pillBase} group border-2 border-[#1e1eb5] bg-[#1e1eb5] font-semibold text-white`}
+        ref={pillRef}
+        className={`${pillBase} group ${filledPillClasses}`}
       >
         {label}
         <button
@@ -31,6 +37,7 @@ function Pill({ placeholder, label, active, onClear }: PillProps) {
 
   return (
     <span
+      ref={pillRef}
       className={`${pillBase} ${
         active
           ? 'border-2 border-dashed border-[#1e1eb5] bg-[#f2f5ff] font-semibold text-[#1e1eb5]'
@@ -43,6 +50,8 @@ function Pill({ placeholder, label, active, onClear }: PillProps) {
 }
 
 type Props = {
+  focusRef: Ref<HTMLSpanElement>
+  outcomeRef: Ref<HTMLSpanElement>
   sentenceParts: string[]
   focusPlaceholder: string
   outcomePlaceholder: string
@@ -53,6 +62,8 @@ type Props = {
 }
 
 export default function SentencePicker({
+  focusRef,
+  outcomeRef,
   sentenceParts,
   focusPlaceholder,
   outcomePlaceholder,
@@ -67,6 +78,7 @@ export default function SentencePicker({
     <div className="flex flex-wrap items-center justify-center gap-x-3.5 gap-y-3">
       <p className={textClass}>{sentenceParts[0]}</p>
       <Pill
+        pillRef={focusRef}
         placeholder={focusPlaceholder}
         label={focusLabel}
         active={!focusLabel}
@@ -74,6 +86,7 @@ export default function SentencePicker({
       />
       <p className={textClass}>{sentenceParts[1]}</p>
       <Pill
+        pillRef={outcomeRef}
         placeholder={outcomePlaceholder}
         label={outcomeLabel}
         active={!!focusLabel && !outcomeLabel}
