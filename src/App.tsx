@@ -7,6 +7,7 @@ import WorkshopOverview from './pages/WorkshopOverview'
 import XenBooksLibrary from './pages/XenBooksLibrary'
 import XenFaqs from './pages/XenFaqs'
 import XenTools from './pages/XenTools'
+import XenToolsRecommender from './pages/XenToolsRecommender'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/xen-faqs" element={<XenFaqs />} />
       <Route path="/connect-with-us" element={<ConnectWithUs />} />
       <Route path="/xen-tools" element={<XenTools />} />
+      <Route path="/xentools-recommender" element={<XenToolsRecommender />} />
     </Routes>
   )
 }
