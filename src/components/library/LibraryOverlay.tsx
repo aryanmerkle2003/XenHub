@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { CloseIcon } from '../recommender/icons'
 import LibraryContent from './LibraryContent'
@@ -12,13 +13,21 @@ export default function LibraryOverlay({ onClose }: { onClose: () => void }) {
   }, [onClose])
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.18, ease: 'easeOut' }}
       className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 px-4 pt-12 md:px-[100px] md:pt-[100px]"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) onClose()
       }}
     >
-      <div
+      <motion.div
+        initial={{ y: 24 }}
+        animate={{ y: 0 }}
+        exit={{ y: 24 }}
+        transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
         role="dialog"
         aria-modal="true"
         aria-label="XENTools Library"
@@ -36,7 +45,7 @@ export default function LibraryOverlay({ onClose }: { onClose: () => void }) {
             </button>
           }
         />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
