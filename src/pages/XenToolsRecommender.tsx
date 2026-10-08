@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import iconArrowRight from '../assets/images/recommender/arrow-right.svg'
 import iconLibrary from '../assets/images/recommender/library-big.svg'
+import { AnimatePresence } from 'framer-motion'
 import LibraryOverlay from '../components/library/LibraryOverlay'
 import RecommenderWizard from '../components/recommender/RecommenderWizard'
 import ToolCardShowcase from '../components/xentools/ToolCardShowcase'
@@ -40,7 +41,7 @@ export default function XenToolsRecommender() {
   const [libraryOpen, setLibraryOpen] = useState(false)
 
   return (
-    <PageLayout>
+    <PageLayout hideFooter>
       <RecommenderDataProvider>
       {started ? (
         <main className="flex min-h-screen w-full flex-col items-center justify-center bg-[#fcfcfc] px-6 pb-[60px] pt-10 md:px-14">
@@ -81,13 +82,15 @@ export default function XenToolsRecommender() {
       <button
         type="button"
         onClick={() => setLibraryOpen(true)}
-        className="fixed bottom-10 right-6 z-30 flex h-12 items-center justify-center gap-2.5 rounded-lg border-[1.5px] border-[#0326d1] bg-white px-3 py-2.5 text-sm font-semibold text-[#0326d1] shadow-[0px_0px_15.8px_0px_rgba(0,0,0,0.25)] md:right-14"
+        className="fixed bottom-10 right-6 z-30 flex h-12 items-center justify-center gap-2.5 rounded-lg border-[1.5px] border-[#0326d1] bg-white px-3 py-2.5 text-sm font-semibold text-[#0326d1] shadow-[0px_0px_15.8px_0px_rgba(0,0,0,0.25)] transition-[transform,box-shadow,background-color] duration-150 ease-out hover:-translate-y-0.5 hover:bg-[#f2f5ff] hover:shadow-[0px_6px_22px_0px_rgba(3,38,209,0.3)] active:translate-y-0 active:scale-[0.96] active:shadow-[0px_0px_10px_0px_rgba(3,38,209,0.25)] md:right-14"
       >
         Browse XENTools
         <img src={iconLibrary} alt="" className="size-[19px]" />
       </button>
 
-      {libraryOpen && <LibraryOverlay onClose={() => setLibraryOpen(false)} />}
+      <AnimatePresence>
+        {libraryOpen && <LibraryOverlay onClose={() => setLibraryOpen(false)} />}
+      </AnimatePresence>
       </RecommenderDataProvider>
     </PageLayout>
   )

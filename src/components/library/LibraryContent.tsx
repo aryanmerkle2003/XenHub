@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { useMemo, useState, type ReactNode } from 'react'
 import { useRecommenderData } from '../../contexts/RecommenderDataContext'
 import { BRANCHES, toolColor, branchesForTool, type BranchId } from '../../data/xenToolPresentation'
@@ -10,7 +11,15 @@ const FILTERS: { id: Filter; label: string }[] = [
   ...BRANCHES.map((b) => ({ id: b.id, label: b.label })),
 ]
 
-export default function LibraryContent({ action }: { action?: ReactNode }) {
+export default function LibraryContent({
+  action,
+  fadeInOnLoad = false,
+  stickyFilters = false,
+}: {
+  action?: ReactNode
+  fadeInOnLoad?: boolean
+  stickyFilters?: boolean
+}) {
   const { tools, isLoading, error } = useRecommenderData()
   const [filter, setFilter] = useState<Filter>('all')
 
@@ -39,7 +48,11 @@ export default function LibraryContent({ action }: { action?: ReactNode }) {
         {action}
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div
+        className={`flex flex-wrap gap-2 ${
+          stickyFilters ? 'sticky top-0 z-10 -my-3 bg-white py-3 pr-12' : ''
+        }`}
+      >
         {FILTERS.map((item) => {
           const active = item.id === filter
           return (
@@ -67,11 +80,16 @@ export default function LibraryContent({ action }: { action?: ReactNode }) {
           Couldn't load the XENTools data. Please try again later.
         </p>
       ) : (
-        <div className="grid grid-cols-1 gap-6 pb-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <motion.div
+          initial={fadeInOnLoad ? { opacity: 0, y: 8 } : false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
+          className="grid grid-cols-[repeat(auto-fill,minmax(251px,1fr))] gap-5 pb-10"
+        >
           {visible.map((tool) => (
             <LibraryCard key={tool.id} tool={tool} color={toolColor(tool, branch)} />
           ))}
-        </div>
+        </motion.div>
       )}
     </div>
   )
