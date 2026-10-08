@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import iconArrowRight from '../assets/images/recommender/arrow-right.svg'
 import iconLibrary from '../assets/images/recommender/library-big.svg'
+import RecommenderWizard from '../components/recommender/RecommenderWizard'
 import ToolCardShowcase from '../components/xentools/ToolCardShowcase'
+import { RecommenderDataProvider } from '../contexts/RecommenderDataContext'
 import PageLayout from '../layouts/PageLayout'
 
 const SHOWCASE_WIDTH = 453
@@ -33,8 +35,17 @@ function ScaledShowcase() {
 }
 
 export default function XenToolsRecommender() {
+  const [started, setStarted] = useState(false)
+
   return (
     <PageLayout>
+      {started ? (
+        <main className="flex min-h-screen w-full flex-col items-center justify-center bg-[#fcfcfc] px-6 pb-[60px] pt-10 md:px-14">
+          <RecommenderDataProvider>
+            <RecommenderWizard />
+          </RecommenderDataProvider>
+        </main>
+      ) : (
       <div className="flex min-h-screen w-full flex-col justify-center bg-[#fcfcfc] px-6 py-10 md:px-14">
         <div className="flex flex-col items-center gap-12 xl:flex-row">
           <div className="flex w-full flex-1 flex-col items-start gap-8">
@@ -51,6 +62,7 @@ export default function XenToolsRecommender() {
             </p>
             <button
               type="button"
+              onClick={() => setStarted(true)}
               className="flex h-[41px] items-center gap-2 rounded-lg bg-[#0326d1] px-7 py-3.5 text-sm font-semibold text-white"
             >
               Get Started
@@ -63,6 +75,7 @@ export default function XenToolsRecommender() {
           </div>
         </div>
       </div>
+      )}
 
       <button
         type="button"
