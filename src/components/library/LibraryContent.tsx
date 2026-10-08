@@ -14,9 +14,11 @@ const FILTERS: { id: Filter; label: string }[] = [
 export default function LibraryContent({
   action,
   fadeInOnLoad = false,
+  stickyFilters = false,
 }: {
   action?: ReactNode
   fadeInOnLoad?: boolean
+  stickyFilters?: boolean
 }) {
   const { tools, isLoading, error } = useRecommenderData()
   const [filter, setFilter] = useState<Filter>('all')
@@ -46,7 +48,11 @@ export default function LibraryContent({
         {action}
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div
+        className={`flex flex-wrap gap-2 ${
+          stickyFilters ? 'sticky top-0 z-10 -my-3 bg-white py-3 pr-12' : ''
+        }`}
+      >
         {FILTERS.map((item) => {
           const active = item.id === filter
           return (
