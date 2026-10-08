@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { useRecommenderData } from '../../contexts/RecommenderDataContext'
 import FlyingChip, { type FlightRect } from './FlyingChip'
 import OptionsPanel from './OptionsPanel'
+import { branchFromLabel } from '../../data/xenToolPresentation'
 import ResultsView from './ResultsView'
 import SentencePicker, { filledPillClasses, pillBase } from './SentencePicker'
 import { ArrowRightIcon } from './icons'
@@ -96,6 +97,7 @@ export default function RecommenderWizard() {
         focusLabel={focusLabel}
         outcomeLabel={outcomeLabel}
         sentenceParts={question.sentenceParts}
+        branch={branchFromLabel(focusLabel)}
         onEdit={() => setShowResults(false)}
       />
     )
@@ -104,7 +106,7 @@ export default function RecommenderWizard() {
   const isComplete = !!focusLabel && !!outcomeLabel
 
   return (
-    <div className="flex w-full flex-col items-center gap-12">
+    <div className="flex w-full flex-1 flex-col items-center gap-12 pt-[clamp(80px,22vh,260px)]">
       <p className="text-[13px] font-semibold uppercase text-[#6b7280]">
         {question.hint}
       </p>

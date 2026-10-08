@@ -11,6 +11,7 @@ import XenBooksLibrary from './pages/XenBooksLibrary'
 import XenMedia from './pages/XenMedia'
 import XenFaqs from './pages/XenFaqs'
 import XenTools from './pages/XenTools'
+import XenToolsLibrary from './pages/XenToolsLibrary'
 import XenToolsRecommender from './pages/XenToolsRecommender'
 
 function ScrollToTop() {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/xen-media" element={<XenMedia />} />
         <Route path="/proprietary-xentools" element={<ProprietaryXenTools />} />
         <Route path="/xentools-recommender" element={<XenToolsRecommender />} />
+        <Route path="/xentools-library" element={<XenToolsLibrary />} />
         <Route path="/xen-tools" element={<XenTools />} />
       </Routes>
     </>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Tool } from '../../data/recommender'
+import { toolColor, type Branch } from '../../data/xenToolPresentation'
 import {
   ChevronRightIcon,
   ClockIcon,
@@ -13,6 +14,7 @@ type Props = {
   focusLabel: string
   outcomeLabel: string
   sentenceParts: string[]
+  branch?: Branch
   onEdit: () => void
 }
 
@@ -27,7 +29,15 @@ function ValueTag({ children }: { children: string }) {
   )
 }
 
-function ExpandedCard({ tool, index }: { tool: Tool; index: number }) {
+function ExpandedCard({
+  tool,
+  index,
+  color,
+}: {
+  tool: Tool
+  index: number
+  color: string
+}) {
   return (
     <div
       className="relative flex h-full flex-col justify-between overflow-hidden p-8"
@@ -75,7 +85,7 @@ function ExpandedCard({ tool, index }: { tool: Tool; index: number }) {
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-[41px] w-full items-center justify-center gap-2 rounded-lg bg-white text-sm font-semibold"
-            style={{ color: tool.categoryColor }}
+            style={{ color }}
           >
             Open in FigJam
             <ExternalLinkIcon className="size-3.5" />
@@ -110,6 +120,7 @@ export default function ResultsView({
   focusLabel,
   outcomeLabel,
   sentenceParts,
+  branch,
   onEdit,
 }: Props) {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -168,11 +179,15 @@ export default function ResultsView({
                   }`}
                   style={{
                     width: active ? CARD_W : STRIP_W,
-                    backgroundColor: tool.categoryColor,
+                    backgroundColor: toolColor(tool, branch),
                   }}
                 >
                   {active ? (
-                    <ExpandedCard tool={tool} index={index} />
+                    <ExpandedCard
+                      tool={tool}
+                      index={index}
+                      color={toolColor(tool, branch)}
+                    />
                   ) : (
                     <Strip tool={tool} index={index} />
                   )}
