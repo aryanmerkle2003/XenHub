@@ -4,10 +4,18 @@ import type { BlankOption } from '../../data/recommender'
 type Props = {
   title: string
   options: BlankOption[]
-  onSelect: (value: string) => void
+  onSelect: (option: BlankOption, el: HTMLElement) => void
+  hiddenValue?: string
+  disabled?: boolean
 }
 
-export default function OptionsPanel({ title, options, onSelect }: Props) {
+export default function OptionsPanel({
+  title,
+  options,
+  onSelect,
+  hiddenValue,
+  disabled,
+}: Props) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -21,7 +29,9 @@ export default function OptionsPanel({ title, options, onSelect }: Props) {
           <button
             key={option.value}
             type="button"
-            onClick={() => onSelect(option.value)}
+            onClick={(e) => onSelect(option, e.currentTarget)}
+            disabled={disabled}
+            style={option.value === hiddenValue ? { visibility: 'hidden' } : undefined}
             className="rounded-[22px] border border-[#e5e7eb] bg-[#fcfcfc] px-5 py-2.5 text-sm font-medium text-[#4b5563] transition-colors hover:border-[#1e1eb5] hover:bg-[#f2f5ff] hover:text-[#1e1eb5]"
           >
             {option.label}

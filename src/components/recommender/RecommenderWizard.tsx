@@ -1,11 +1,31 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useRecommenderData } from '../../contexts/RecommenderDataContext'
+import FlyingChip, { type FlightRect } from './FlyingChip'
 import OptionsPanel from './OptionsPanel'
 import ResultsView from './ResultsView'
-import SentencePicker from './SentencePicker'
+import SentencePicker, { filledPillClasses, pillBase } from './SentencePicker'
 import { ArrowRightIcon } from './icons'
 
 type Answers = { focus?: string; outcome?: string }
+
+type Flight = {
+  blank: 'focus' | 'outcome'
+  value: string
+  label: string
+  from: FlightRect
+  to: FlightRect
+}
+
+function measureFilledPill(label: string): { width: number; height: number } {
+  const probe = document.createElement('span')
+  probe.className = `${pillBase} ${filledPillClasses}`
+  probe.style.cssText = 'position:fixed;left:-9999px;top:0;visibility:hidden'
+  probe.textContent = label
+  document.body.appendChild(probe)
+  const { width, height } = probe.getBoundingClientRect()
+  probe.remove()
+  return { width, height }
+}
 
 function Message({ children }: { children: string }) {
   return <p className="text-sm text-[#6b7280]">{children}</p>
@@ -16,6 +36,9 @@ export default function RecommenderWizard() {
     useRecommenderData()
   const [answers, setAnswers] = useState<Answers>({})
   const [showResults, setShowResults] = useState(false)
+  const [flight, setFlight] = useState<Flight | null>(null)
+  const focusPillRef = useRef<HTMLSpanElement>(null)
+  const outcomePillRef = useRef<HTMLSpanElement>(null)
 
   if (isLoading) return <Message>Loading frameworks…</Message>
   if (error || questions.length === 0)
@@ -28,11 +51,43 @@ export default function RecommenderWizard() {
   const focusLabel = focusBlank.options.find((o) => o.value === answers.focus)?.label
   const outcomeLabel = outcomeOptions.find((o) => o.value === answers.outcome)?.label
 
-  const selectFocus = (value: string) => setAnswers({ focus: value })
-  const selectOutcome = (value: string) =>
-    setAnswers((prev) => ({ ...prev, outcome: value }))
-  const clearFocus = () => setAnswers({})
-  const clearOutcome = () => setAnswers((prev) => ({ focus: prev.focus }))
+  const startFlight = (
+    blank: 'focus' | 'outcome',
+    option: { value: string; label: string },
+    el: HTMLElement,
+  ) => {
+    const target = (blank === 'focus' ? focusPillRef : outcomePillRef).current
+    if (flight || !target) return
+    const src = el.getBoundingClientRect()
+    const dst = target.getBoundingClientRect()
+    const size = measureFilledPill(option.label)
+    setFlight({
+      blank,
+      value: option.value,
+      label: option.label,
+      from: { left: src.left, top: src.top, width: src.width, height: src.height },
+      to: {
+        left: dst.left + dst.width / 2 - size.width / 2,
+        top: dst.top + dst.height / 2 - size.height / 2,
+        width: size.width,
+        height: size.height,
+      },
+    })
+  }
+
+  const completeFlight = () => {
+    if (!flight) return
+    if (flight.blank === 'focus') setAnswers({ focus: flight.value })
+    else setAnswers((prev) => ({ ...prev, outcome: flight.value }))
+    setFlight(null)
+  }
+
+  const clearFocus = () => {
+    if (!flight) setAnswers({})
+  }
+  const clearOutcome = () => {
+    if (!flight) setAnswers((prev) => ({ focus: prev.focus }))
+  }
 
   if (showResults && answers.focus && answers.outcome && focusLabel && outcomeLabel) {
     return (
@@ -55,6 +110,8 @@ export default function RecommenderWizard() {
       </p>
 
       <SentencePicker
+        focusRef={focusPillRef}
+        outcomeRef={outcomePillRef}
         sentenceParts={question.sentenceParts}
         focusPlaceholder={focusBlank.placeholder}
         outcomePlaceholder={outcomeBlank.placeholder}
@@ -83,14 +140,26 @@ export default function RecommenderWizard() {
           key="outcome"
           title="Outcome Options"
           options={outcomeOptions}
-          onSelect={selectOutcome}
+          onSelect={(option, el) => startFlight('outcome', option, el)}
+          hiddenValue={flight?.blank === 'outcome' ? flight.value : undefined}
+          disabled={!!flight}
         />
       ) : (
         <OptionsPanel
           key="focus"
           title="Focus Options"
           options={focusBlank.options}
-          onSelect={selectFocus}
+          onSelect={(option, el) => startFlight('focus', option, el)}
+          hiddenValue={flight?.blank === 'focus' ? flight.value : undefined}
+          disabled={!!flight}
+        />
+      )}
+      {flight && (
+        <FlyingChip
+          label={flight.label}
+          from={flight.from}
+          to={flight.to}
+          onComplete={completeFlight}
         />
       )}
     </div>
