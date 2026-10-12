@@ -42,16 +42,13 @@ export default function LibraryOverlay({ onClose }: { onClose: () => void }) {
           type="button"
           onClick={onClose}
           aria-label="Close XENTools Library"
-          className="absolute right-6 top-[60px] z-20 flex h-8 w-[31px] items-center justify-center rounded-lg border border-[#e5e5e9] bg-white text-[#111827] transition-colors hover:bg-[#f3f4f6] md:right-[75px]"
+          className="absolute right-2.5 top-2.5 z-20 flex h-8 w-[31px] items-center justify-center rounded-lg border border-[#e5e5e9] bg-white text-[#111827] transition-colors hover:bg-[#f3f4f6] md:right-[15px] md:top-[15px]"
         >
           <CloseIcon className="size-4" />
         </button>
         <div className="absolute inset-0 overflow-y-auto overscroll-contain px-6 md:px-[75px]">
           <div className="pt-[60px]">
-            <LibraryContent
-              stickyFilters
-              action={<div className="h-8 w-[31px] shrink-0" aria-hidden />}
-            />
+            <LibraryContent stickyFilters />
           </div>
         </div>
       </motion.div>
