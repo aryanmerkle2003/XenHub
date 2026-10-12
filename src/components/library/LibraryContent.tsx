@@ -50,7 +50,7 @@ export default function LibraryContent({
 
       <div
         className={`flex flex-wrap gap-2 ${
-          stickyFilters ? 'sticky top-0 z-10 -my-3 bg-white py-3 pr-12' : ''
+          stickyFilters ? 'sticky top-0 z-10 -mx-[15px] -my-[15px] bg-white p-[15px] max-md:pr-[41px]' : ''
         }`}
       >
         {FILTERS.map((item) => {
